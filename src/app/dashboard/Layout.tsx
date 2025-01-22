@@ -1,9 +1,10 @@
+import Page from "./page"
 
 
 const Layout = () => {
   return (
     <>
-kkkkkkkkk
+      <Page />
     </>
 
   )
