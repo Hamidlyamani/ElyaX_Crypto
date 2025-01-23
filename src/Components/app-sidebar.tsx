@@ -1,7 +1,17 @@
 import * as React from "react"
+import logo from "@/assets/imgs/logo.png"
+import m1 from "@/assets/imgs/icons/m1.png"
+import m2 from "@/assets/imgs/icons/m2.png"
+import m3 from "@/assets/imgs/icons/m3.png"
+import m4 from "@/assets/imgs/icons/m4.png"
+import m5 from "@/assets/imgs/icons/m5.png"
+import m6 from "@/assets/imgs/icons/m6.png"
+import m7 from "@/assets/imgs/icons/m7.png"
+
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -11,42 +21,50 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/Components/ui/sidebar"
-
+import { FaBeer } from 'react-icons/fa';
+import { RxDashboard } from "react-icons/rx";
+import { IconMenu } from "./ui/IconMenu"
 // This is sample data.
 const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
   navMain: [
 
     {
       items: [
         {
-          title: "Routing",
+          title: "Dashboard",
           url: "#",
+          icon: m1,
         },
         {
-          title: "Data Fetching",
+          title: "Watchlist",
           url: "#",
+          icon: FaBeer,
           isActive: true,
         },
         {
-          title: "Rendering",
+          title: "Portfolio",
           url: "#",
+          icon: FaBeer,
         },
         {
-          title: "Caching",
+          title: "Trading",
           url: "#",
+          icon: FaBeer,
         },
         {
-          title: "Styling",
+          title: "Academy",
           url: "#",
+          icon: FaBeer,
         },
         {
-          title: "Optimizing",
+          title: "Profile",
           url: "#",
+          icon: FaBeer,
         },
         {
-          title: "Configuring",
+          title: "Wallet",
           url: "#",
+          icon: FaBeer,
         },
 
       ],
@@ -56,9 +74,9 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar {...props}>
+    <Sidebar {...props} collapsible="icon">
       <SidebarHeader>
-
+        <img src={logo} alt="" className="p-2 m-4 mr-8 logo " />
       </SidebarHeader>
       <SidebarContent>
         {/* We create a SidebarGroup for each parent. */}
@@ -70,7 +88,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={item.isActive}>
-                      <a href={item.url}>{item.title}</a>
+
+                      <a href={item.url}><IconMenu imge={item.icon} />  {item.title}</a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -79,6 +98,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarGroup>
         ))}
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            hgghghhg
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )
