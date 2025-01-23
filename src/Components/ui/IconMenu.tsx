@@ -8,8 +8,8 @@ type IconMenuProps = {
 export function IconMenu({ imge }: IconMenuProps) {
     return (
         <div>
-            <div className="flex justify-center align-middle bg-black rounded-full aspect-square dark:bg-white">
-                {typeof imge === "string" && <img src={imge} alt="" className="" />}
+            <div className="flex justify-center align-middle p-2 bg-white dark:bg-black rounded-full aspect-square ">
+                {typeof imge === "string" && <img src={imge} alt="" className="aspect-square" />}
             </div>
         </div>
     )

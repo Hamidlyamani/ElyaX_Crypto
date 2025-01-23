@@ -38,33 +38,33 @@ const data = {
         {
           title: "Watchlist",
           url: "#",
-          icon: FaBeer,
+          icon: m2,
           isActive: true,
         },
         {
           title: "Portfolio",
           url: "#",
-          icon: FaBeer,
+          icon: m3,
         },
         {
           title: "Trading",
           url: "#",
-          icon: FaBeer,
+          icon: m4,
         },
         {
           title: "Academy",
           url: "#",
-          icon: FaBeer,
+          icon: m5,
         },
         {
           title: "Profile",
           url: "#",
-          icon: FaBeer,
+          icon: m6,
         },
         {
           title: "Wallet",
           url: "#",
-          icon: FaBeer,
+          icon: m7,
         },
 
       ],
@@ -88,7 +88,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={item.isActive}>
-
                       <a href={item.url}><IconMenu imge={item.icon} />  {item.title}</a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
