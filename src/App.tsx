@@ -1,6 +1,6 @@
 
 import './App.css'
-import Layout from './app/dashboard/Layout'
+import Layout from './dashboard/Layout'
 
 function App() {
 

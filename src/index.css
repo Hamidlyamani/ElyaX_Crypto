@@ -27,8 +27,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
-  ;
+    --radius: 0.5rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -36,7 +35,8 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%}
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
   .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
@@ -61,8 +61,7 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
-  ;
+    --chart-5: 340 75% 55%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -70,7 +69,8 @@
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%}
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 }
 @layer base {
   * {
@@ -79,4 +79,46 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer utilities {
+  .custom-gradient-box {
+    @apply font-L_medium p-2 bg-white;
+    position: relative; /* Required for positioning the pseudo-element */
+    color: #000000;
+    border-radius: 16px;
+   z-index: 999;
+   overflow: visible;
+}
+
+.custom-gradient-box::after {
+    content: '';
+    position: absolute;
+    top: 0px; /* Adjust as needed */
+    left: 0px; /* Adjust as needed */
+    right: 0px; /* Adjust as needed */
+    bottom: 0px; /* Adjust as needed */
+    border-radius: 17px; /* Adjust to create the inner radius */
+background-color: aliceblue;
+    z-index: -1; /* Ensure it is behind the text */
+}
+.custom-gradient-box::before {
+    content: '';
+    position: absolute;
+    top: -5px; /* Adjust as needed */
+    left: -5px; /* Adjust as needed */
+    right: -5px; /* Adjust as needed */
+    bottom: -5px; /* Adjust as needed */
+    border-radius: 17px; /* Adjust to create the inner radius */
+    background: radial-gradient(
+        circle,
+        rgba(119, 237, 145, 0.78) 8%,
+        rgba(119, 237, 145, 0.78) 25%,
+        rgba(119, 237, 145, 0.78) 42%,
+        rgba(119, 237, 180, 0.78) 63%,
+        rgba(126, 255, 155, 0.78) 80%,
+        rgba(44, 149, 67, 0.78) 100%
+    );
+    z-index: -9; /* Ensure it is behind the text */
+}
 }

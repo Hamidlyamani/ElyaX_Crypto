@@ -27,50 +27,19 @@ import { IconMenu } from "./ui/IconMenu"
 // This is sample data.
 const data = {
   navMain: [
-
     {
       items: [
-        {
-          title: "Dashboard",
-          url: "#",
-          icon: m1,
-        },
-        {
-          title: "Watchlist",
-          url: "#",
-          icon: m2,
-          isActive: true,
-        },
-        {
-          title: "Portfolio",
-          url: "#",
-          icon: m3,
-        },
-        {
-          title: "Trading",
-          url: "#",
-          icon: m4,
-        },
-        {
-          title: "Academy",
-          url: "#",
-          icon: m5,
-        },
-        {
-          title: "Profile",
-          url: "#",
-          icon: m6,
-        },
-        {
-          title: "Wallet",
-          url: "#",
-          icon: m7,
-        },
-
+        { title: "Dashboard", url: "dashboard", icon: m1 },
+        { title: "Watchlist", url: "watchlist", icon: m2, isActive: true },
+        { title: "Portfolio", url: "portfolio", icon: m3 },
+        { title: "Trading", url: "trading", icon: m4 },
+        { title: "Academy", url: "academy", icon: m5 },
+        { title: "Profile", url: "profile", icon: m6 },
+        { title: "Wallet", url: "wallet", icon: m7 },
       ],
-    }
+    },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (

@@ -16,7 +16,7 @@ export default {
 				L_regular: [
 					'Lufga-regular'
 				],
-				L_bold: [
+				L_medium: [
 					'Lufga-medium'
 				]
 			},
