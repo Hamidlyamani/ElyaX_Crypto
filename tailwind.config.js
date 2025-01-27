@@ -27,7 +27,7 @@ export default {
 				},
 				orange: '#F46D22',
 				green_light: '#1DD6B4',
-				yallow: '#DDC85B',
+				yallow: '#FAE529',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				card: {

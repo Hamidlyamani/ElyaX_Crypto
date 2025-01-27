@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -37,6 +38,7 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
   .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
@@ -72,10 +74,12 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -83,42 +87,62 @@
 
 @layer utilities {
   .custom-gradient-box {
-    @apply font-L_medium p-2 bg-white;
-    position: relative; /* Required for positioning the pseudo-element */
+    @apply p-2 bg-white font-L_medium;
+    position: relative;
+    /* Required for positioning the pseudo-element */
     color: #000000;
     border-radius: 16px;
-   z-index: 999;
-   overflow: visible;
-}
+    z-index: 999;
+    overflow: visible;
+  }
 
-.custom-gradient-box::after {
+  .custom-gradient-box::after {
     content: '';
     position: absolute;
-    top: 0px; /* Adjust as needed */
-    left: 0px; /* Adjust as needed */
-    right: 0px; /* Adjust as needed */
-    bottom: 0px; /* Adjust as needed */
-    border-radius: 17px; /* Adjust to create the inner radius */
-background-color: aliceblue;
-    z-index: -1; /* Ensure it is behind the text */
-}
-.custom-gradient-box::before {
+    top: 0px;
+    /* Adjust as needed */
+    left: 0px;
+    /* Adjust as needed */
+    right: 0px;
+    /* Adjust as needed */
+    bottom: 0px;
+    /* Adjust as needed */
+    border-radius: 17px;
+    /* Adjust to create the inner radius */
+    background-color: aliceblue;
+    z-index: -1;
+    /* Ensure it is behind the text */
+  }
+
+  .custom-gradient-box::before {
     content: '';
     position: absolute;
-    top: -5px; /* Adjust as needed */
-    left: -5px; /* Adjust as needed */
-    right: -5px; /* Adjust as needed */
-    bottom: -5px; /* Adjust as needed */
-    border-radius: 17px; /* Adjust to create the inner radius */
-    background: radial-gradient(
-        circle,
+    top: -3px;
+    /* Adjust as needed */
+    left: -3px;
+    /* Adjust as needed */
+    right: -3px;
+    /* Adjust as needed */
+    bottom: -3px;
+    /* Adjust as needed */
+    border-radius: 17px;
+    /* Adjust to create the inner radius */
+    background: radial-gradient(circle,
         rgba(119, 237, 145, 0.78) 8%,
         rgba(119, 237, 145, 0.78) 25%,
         rgba(119, 237, 145, 0.78) 42%,
         rgba(119, 237, 180, 0.78) 63%,
         rgba(126, 255, 155, 0.78) 80%,
-        rgba(44, 149, 67, 0.78) 100%
-    );
-    z-index: -9; /* Ensure it is behind the text */
-}
+        rgba(44, 149, 67, 0.78) 100%);
+    z-index: -9;
+    /* Ensure it is behind the text */
+  }
+
+  .filter_white {
+    filter: brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(996%) hue-rotate(243deg) brightness(122%) contrast(100%);
+  }
+
+  .filter_black {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(79%) saturate(6758%) hue-rotate(148deg) brightness(98%) contrast(109%);
+  }
 }

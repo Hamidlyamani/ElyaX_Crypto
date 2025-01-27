@@ -3,7 +3,7 @@ import { AppSidebar } from "@/Components/app-sidebar"
 import {
   SidebarInset,
   SidebarProvider,
- 
+
 } from "@/Components/ui/sidebar"
 import Home from "./Home/Home"
 import Watchlist from "./Watchlist/Watchlist"
@@ -14,8 +14,7 @@ import { useState } from "react"
 import Profile from "./Profile/Profile"
 import Wallet from "./Portfolio/Wallet"
 const Page = () => {
-  const [selectedMenuItem, setSelectedMenuItem] = useState('Watchlist');
-
+  const [selectedMenuItem, setSelectedMenuItem] = useState('Dashboard');
   const renderComponent = () => {
     switch (selectedMenuItem) {
       case 'Dashboard':
@@ -40,7 +39,7 @@ const Page = () => {
 
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar selectedMenuItem={selectedMenuItem} onMenuItemClick={setSelectedMenuItem} />
       <SidebarInset>
         {renderComponent()}
       </SidebarInset>
