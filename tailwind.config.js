@@ -18,7 +18,24 @@ export default {
 				],
 				L_medium: [
 					'Lufga-medium'
+				],
+				L_semiBold: [
+					'Lufga-medium'
 				]
+			},
+			fontSize: {
+				'h1': ['32px', { lineHeight: '40px' }],
+				'h1-b': ['58px'],
+				'h2': ['54px', { lineHeight: '60px', fontWeight: 'bold', letterSpacing: '-0.036em' }],
+				'h2-m': ['30px' ],
+				'h4': ['24px'],
+				'h5': ['18px', { fontWeight: 'bold' }],
+				'b-large': ['18px', { lineHeight: '22px'}],
+				'b-small': ['14px'],
+				'b-medium': ['16px', { lineHeight: '23px', fontWeight: 400 }],
+				'b-bold': ['16px', { fontWeight: 600 }],
+				'b-s-bold': ['14px', { fontWeight: 'bold' }],
+				'tag': ['12px'],
 			},
 			colors: {
 				primary: {
@@ -27,7 +44,16 @@ export default {
 				},
 				orange: '#F46D22',
 				green_light: '#1DD6B4',
+				green_light_1: '#77ED91',
 				yallow: '#FAE529',
+				black_coin:'#1A1A1A',
+				gray: {
+					800: "#909093",
+					900: "#212325",
+					100: "#909093",
+					50: "rgb(217, 217, 217)",
+					10: "#F8F8F9",
+				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				card: {

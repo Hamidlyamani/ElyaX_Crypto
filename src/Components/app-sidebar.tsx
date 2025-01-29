@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import logo from "@/assets/imgs/logo.png"
 import m1 from "@/assets/imgs/icons/m1.png"
 import m2 from "@/assets/imgs/icons/m2.png"
@@ -52,7 +52,13 @@ const data = {
 
 export function AppSidebar({ selectedMenuItem, onMenuItemClick, ...props }: AppSidebarProps) {
 
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
+
+
+  useEffect(() => {
+    document.body.classList.toggle("dark", dark);
+  }, [dark])
+
 
   const darkModeHandler = () => {
     setDark(!dark);

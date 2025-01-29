@@ -15,7 +15,7 @@ const Switch = React.forwardRef<
 >(({ className, checked, onCheckedChange, ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(
-      "peer inline-flex relative h-[34px] w-[72px] my-2 mx-4 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-gray-400  data-[state=unchecked]:bg-white ",
+      "peer inline-flex relative h-[34px] w-[70px]  my-2 mx-4 shrink-0 cursor-pointer items-center rounded-full border-[1px] border-gray shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-transparent  data-[state=unchecked]:bg-white ",
       className
     )}
     checked={checked}
@@ -29,7 +29,7 @@ const Switch = React.forwardRef<
       )}
     />
     <div className="absolute flex justify-between w-full p-1 align-middle">
-      <span className="flex items-center"><img src={moon} alt="" /></span>
+      <span className="flex items-center dark:filter_white"><img src={moon} alt="" /></span>
       <span className="flex items-center mr-1"><img src={moon_1} alt="" /></span>
     </div>
   </SwitchPrimitives.Root>

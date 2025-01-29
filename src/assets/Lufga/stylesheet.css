@@ -33,3 +33,15 @@
     font-style: normal;
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'Lufga-simeBold';
+    src: url('Lufga-SemiBold.eot');
+    src: url('Lufga-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Lufga-SemiBold.woff') format('woff'),
+        url('Lufga-SemiBold.ttf') format('truetype'),
+        url('Lufga-SemiBold.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
