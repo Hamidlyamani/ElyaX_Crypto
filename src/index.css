@@ -86,6 +86,42 @@
 }
 
 @layer utilities {
+  html {
+      scroll-behavior: smooth !important;
+    }
+        ::-webkit-scrollbar {
+          width: 5px;
+          /* Width of the scrollbar */
+        }
+    
+        ::-webkit-scrollbar-track {
+          background: #ffffff;
+          /* Background of the scrollbar track */
+          border-radius: 5px;
+          /* Optional: for rounded corners */
+        }
+    
+        ::-webkit-scrollbar-thumb {
+          background-color: #5d796b;
+          /* Scrollbar color */
+          border-radius: 10px;
+          /* Optional: for rounded corners */
+          border: 2px solid #1100ff;
+          /* Optional: gives spacing around the thumb */
+        }
+    
+        ::-webkit-scrollbar-thumb:hover {
+          background-color: #46634f;
+          /* Change color on hover */
+        }
+    
+        /* For Firefox */
+        * {
+          scrollbar-width: thin;
+          /* Makes the scrollbar thinner */
+          scrollbar-color: #9fd1b2 #ffffff;
+          /* Thumb and track colors */
+        }
   .custom-gradient {
     @apply p-1 bg-white font-L_medium;
     position: relative;

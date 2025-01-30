@@ -1,13 +1,13 @@
 
-import { Search } from './search'
 import notif from "@/assets/imgs/icons/noti.png";
 import user from "@/assets/imgs/icons/user.png";
+import { Search } from "./ui/search";
 
 
 const Header = () => {
     return (
         <>
-            <div className="flex items-center justify-between mx-8 my-6">
+            <div className="flex items-center justify-between  mb-6">
                 <div className="title">
                     <h2 className=' font-L_medium text-h1'>Dashboard</h2>
                     <span className='italic text-gray-800 font-L_light text-tag'>Updated on 23 may 2023</span>

@@ -1,8 +1,10 @@
 import b1 from "@/assets/imgs/icon.png";
 import change1 from "@/assets/imgs/Vector.png";
 import graph from "@/assets/imgs/graph.png";
+import { coinType } from '@/Api/types'
 
-export const Coin = () => {
+
+export const Coin = (data: coinType) => {
     return (
         <div className=' bg-gray-10 dark:bg-black_coin p-4 rounded-3xl w-1/4 '>
             <div className="flex gap-4 justify-between ">
@@ -11,8 +13,10 @@ export const Coin = () => {
                         <img src={b1} alt="" />
                     </div>
                     <div className="name">
-                        <h5 className="font-L_semiBold">betcoin</h5>
-                        <span className="font-L_regular text-tag text-gray-600 dark:text-gray-800 uppercase">BTC</span>
+                        <h5 className="font-L_semiBold">
+                            {data.name}
+                        </h5>
+                        <span className="font-L_regular text-tag text-gray-600 dark:text-gray-800 uppercase">{data.abrev}</span>
                     </div>
                 </div>
                 <div className="change">
@@ -21,8 +25,8 @@ export const Coin = () => {
             </div>
             <div className="prix flex mt-8 p-2 justify-between items-end">
                 <div>
-                    <div className="text-h4 font-L_medium ">$52,291</div>
-                    <span className=" text-green_light_1 font-L_semiBold text-b-small">+0.25%</span>
+                    <div className="text-h4 font-L_medium ">{data.price}</div>
+                    <span className=" text-green_light_1 font-L_semiBold text-b-small">+{data.change}%</span>
                 </div>
                 <div className="chart">
                     <img src={graph} alt="" />

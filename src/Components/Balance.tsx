@@ -5,7 +5,7 @@ import arrow from "@/assets/imgs/icons/arrow1.png";
 
 export const Balance = () => {
     return (
-        <div className='flex items-end justify-between mx-8 my-8'>
+        <div className='flex items-end justify-between my-8'>
             <div className="font-L_regular">
                 <h3 className=' text-b-large uppercase '>Total Balance</h3>
                 <div className="font-L_regular text-h1-b ">$154,610<span className="text-gray-600 dark:text-gray-800 text-h2-m">.00*</span></div>
