@@ -2,15 +2,34 @@
 import notif from "@/assets/imgs/icons/noti.png";
 import user from "@/assets/imgs/icons/user.png";
 import { Search } from "./ui/search";
+import { SidebarTrigger } from "./ui/sidebar";
+import { Separator } from "@radix-ui/react-separator";
 
+const formatDate = (date: Date) => {
+    return date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+    });
+};
+type HeaderProps = {
+    namePage: string;
+};
 
-const Header = () => {
+const Header = ({ namePage }: HeaderProps) => {
+    const today = new Date();
+
     return (
         <>
             <div className="flex items-center justify-between  mb-6">
-                <div className="title">
-                    <h2 className=' font-L_medium text-h1'>Dashboard</h2>
-                    <span className='italic text-gray-800 font-L_light text-tag'>Updated on 23 may 2023</span>
+              
+                <div className="title flex items-center gap-3">
+                    <SidebarTrigger className="-ml-1" />
+                    <Separator orientation="vertical" className="h-12 bg-gray-700   w-[1px] dark:bg-gray-300" />
+                    <div>
+                        <h2 className=' font-L_medium text-h1'>{namePage}</h2>
+                        <span className='italic text-gray-800 font-L_light text-tag'>Updated on {formatDate(today)}</span>
+                    </div>
                 </div>
                 <div className="flex items-start gap-5 header_left">
                     <div className="search">

@@ -34,11 +34,11 @@ export const ChartCoin = () => {
                         <h6 className="text-h2-m font-L_medium">$38,252.02</h6>
                     </div>
                     <div className="right flex gap-2 p-2">
-                        <div className="bg-gray-900 p-1 px-4 text-gray-800 text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900 " data-active="true">1h</div>
-                        <div className="bg-gray-900 p-1 px-4 text-gray-800 text-tag-small flex items-center  rounded-full ">3h</div>
-                        <div className="bg-gray-900 p-1 px-4 text-gray-800 text-tag-small flex items-center  rounded-full ">1d</div>
-                        <div className="bg-gray-900 p-1 px-4 text-gray-800 text-tag-small flex items-center  rounded-full ">1w</div>
-                        <div className="bg-gray-900 p-1 px-4 text-gray-800 text-tag-small flex items-center  rounded-full ">1m</div>
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4 text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900 " data-active="true">1h</div>
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">3h</div>
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1d</div>
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1w</div>
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1m</div>
                     </div>
                 </div>
                 <div className="chart">

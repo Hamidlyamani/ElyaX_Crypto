@@ -5,10 +5,11 @@ import { PortfolioHome } from "@/Components/portfolioHome";
 import { ChartCoin } from "@/Components/ChartCoin";
 
 
-
 export default function Home() {
+
   return (<div className="mx-8 my-4">
-    <Header />
+    <Header namePage="dachboard" />
+
     <Balance />
     <Coins />
     <div className="flex gap-4  justify-between">

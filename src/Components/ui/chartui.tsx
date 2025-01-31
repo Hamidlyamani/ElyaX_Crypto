@@ -13,10 +13,6 @@ const chartData = [
 ]
 
 const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "hsl(var(--chart-1))",
-    },
     mobile: {
         label: "Mobile",
         color: "hsl(var(--chart-2))",
@@ -32,7 +28,7 @@ export function ChartUi() {
                         accessibilityLayer
                         data={chartData}
                         margin={{
-                            left: -20,
+                            left: -10,
                             right: 12,
                         }}
                     >
@@ -44,24 +40,50 @@ export function ChartUi() {
                             tickMargin={8}
                             tickFormatter={(value) => value.slice(0, 3)}
                         />
-                        <YAxis tickLine={false} axisLine={false} tickMargin={8} tickCount={3} />
-                        <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
+                        <YAxis
+
+                            tickLine={false}
+                            axisLine={false}
+                            tickMargin={8}
+                            tickCount={5}
+
+                        />
+                        <ChartTooltip cursor={true} content={<ChartTooltipContent />} />
+                        <defs>
+                            <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
+
+                                <stop
+
+                                    offset="5%"
+
+                                    stopColor="var(--color-mobile)"
+
+                                    stopOpacity={0.8}
+
+                                />
+
+                                <stop
+
+                                    offset="95%"
+
+                                    stopColor="var(--color-mobile)"
+
+                                    stopOpacity={0.1}
+
+                                />
+
+                            </linearGradient>
+
+                        </defs>
                         <Area
                             dataKey="mobile"
                             type="natural"
-                            fill="var(--color-mobile)"
+                            fill="url(#fillMobile)"
                             fillOpacity={0.4}
                             stroke="var(--color-mobile)"
                             stackId="a"
                         />
-                        <Area
-                            dataKey="desktop"
-                            type="natural"
-                            fill="var(--color-desktop)"
-                            fillOpacity={0.4}
-                            stroke="var(--color-desktop)"
-                            stackId="a"
-                        />
+                     
                     </AreaChart>
                 </ChartContainer>
             </CardContent>
