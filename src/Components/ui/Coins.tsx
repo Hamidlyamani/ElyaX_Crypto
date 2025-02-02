@@ -34,7 +34,7 @@ export const Coins = () => {
         },
     ]
     return (
-        <div className='flex items-end justify-between my-4 gap-4'>
+        <div className='flex items-end justify-between flex-wrap my-4 lg:gap-2 lg:flex-nowrap '>
             {data.map((item) => (
                 <Coin key={item.id} {...item} />
             ))}

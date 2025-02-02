@@ -1,7 +1,7 @@
-import { TrendingUp } from "lucide-react"
+
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
-import {  CardContent, CardFooter, } from "@/Components/ui/card"
+import {  CardContent } from "@/Components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/Components/ui/chart"
 const chartData = [
     { month: "January",  mobile: 80 },

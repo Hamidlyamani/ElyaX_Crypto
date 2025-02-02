@@ -6,10 +6,10 @@ import { coinType } from '@/Api/types'
 
 export const Coin = (data: coinType) => {
     return (
-        <div className=' bg-gray-10 dark:bg-black_coin p-4 rounded-3xl w-1/4 '>
-            <div className="flex gap-4 justify-between ">
-                <div className="flex gap-4">
-                    <div className="icon_coin">
+        <div className=' bg-gray-10 dark:bg-black_coin p-2 md:p-4  rounded-3xl m-1  w-[calc(50%_-_8px)] lg:w-1/4 lg:m-0  '>
+            <div className="flex gap-2 md:gap-4 justify-between items-center">
+                <div className="flex gap-2 md:gap-4">
+                    <div className="icon_coin min-w-8">
                         <img src={b1} alt="" />
                     </div>
                     <div className="name">
@@ -19,13 +19,13 @@ export const Coin = (data: coinType) => {
                         <span className="font-L_regular text-tag text-gray-600 dark:text-gray-800 uppercase">{data.abrev}</span>
                     </div>
                 </div>
-                <div className="change">
+                <div className="change min-w-6">
                     <img src={change1} alt="" />
                 </div>
             </div>
-            <div className="prix flex mt-8 p-2 justify-between items-end">
+            <div className="prix flex mt-8 gap-1 justify-between items-end">
                 <div>
-                    <div className="text-h4 font-L_medium ">{data.price}</div>
+                    <div className="text-h5 md:text-h4 font-L_medium ">{data.price}</div>
                     <span className=" text-green_light_1 font-L_semiBold text-b-small">+{data.change}%</span>
                 </div>
                 <div className="chart">

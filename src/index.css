@@ -60,7 +60,7 @@
     --input: 215 27.9% 16.9%;
     --ring: 216 12.2% 83.9%;
     --chart-1: 142 88% 28%;
-      --chart-2: 139 65% 20%;
+    --chart-2: 139 65% 20%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
@@ -87,41 +87,41 @@
 
 @layer utilities {
   html {
-      scroll-behavior: smooth !important;
-    }
-        ::-webkit-scrollbar {
-          width: 5px;
-          /* Width of the scrollbar */
-        }
-    
-        ::-webkit-scrollbar-track {
-          background: #ffffff;
-          /* Background of the scrollbar track */
-          border-radius: 5px;
-          /* Optional: for rounded corners */
-        }
-    
-        ::-webkit-scrollbar-thumb {
-          background-color: #5d796b;
-          /* Scrollbar color */
-          border-radius: 10px;
-          /* Optional: for rounded corners */
-          border: 2px solid #1100ff;
-          /* Optional: gives spacing around the thumb */
-        }
-    
-        ::-webkit-scrollbar-thumb:hover {
-          background-color: #46634f;
-          /* Change color on hover */
-        }
-    
-        /* For Firefox */
-        * {
-          scrollbar-width: thin;
-          /* Makes the scrollbar thinner */
-          scrollbar-color: #9fd1b2 #ffffff;
-          /* Thumb and track colors */
-        }
+    scroll-behavior: smooth !important;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    /* Width of the scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #ffffff;
+    /* Background of the scrollbar track */
+    border-radius: 5px;
+    /* Optional: for rounded corners */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #5d796b;
+    /* Scrollbar color */
+    border-radius: 10px;
+    /* Optional: for rounded corners */
+    border: 2px solid #1100ff;
+    /* Optional: gives spacing around the thumb */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #46634f;
+    /* Change color on hover */
+  }
+
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    /* Makes the scrollbar thinner */
+    scrollbar-color: #9fd1b2 #ffffff;
+    /* Thumb and track colors */
+  }
   .custom-gradient {
     @apply p-1 bg-white font-L_medium;
     position: relative;
@@ -131,7 +131,7 @@
   }
 
   .custom-gradient::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0px;
     left: 0px;
@@ -142,7 +142,7 @@
   }
 
   .custom-gradient::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -3px;
     left: -3px;
@@ -160,13 +160,15 @@
   }
 
   .custom-gradient-box::before {
-    background: radial-gradient(circle,
-        rgba(119, 237, 145, 0.78) 8%,
-        rgba(119, 237, 145, 0.78) 25%,
-        rgba(119, 237, 145, 0.78) 42%,
-        rgba(119, 237, 180, 0.78) 63%,
-        rgba(126, 255, 155, 0.78) 80%,
-        rgba(44, 149, 67, 0.78) 100%);
+    background: radial-gradient(
+      circle,
+      rgba(119, 237, 145, 0.78) 8%,
+      rgba(119, 237, 145, 0.78) 25%,
+      rgba(119, 237, 145, 0.78) 42%,
+      rgba(119, 237, 180, 0.78) 63%,
+      rgba(126, 255, 155, 0.78) 80%,
+      rgba(44, 149, 67, 0.78) 100%
+    );
     z-index: -9;
   }
 
@@ -179,26 +181,30 @@
   }
 
   .custom-gradient-box-dark::before {
-    background: radial-gradient(circle,
-        rgba(119, 237, 145, 0.78) 8%,
-        rgba(119, 237, 145, 0.78) 25%,
-        rgba(119, 237, 145, 0.78) 42%,
-        rgba(119, 237, 180, 0.78) 63%,
-        rgba(126, 255, 155, 0.78) 80%,
-        rgba(44, 149, 67, 0.78) 100%);
+    background: radial-gradient(
+      circle,
+      rgba(119, 237, 145, 0.78) 8%,
+      rgba(119, 237, 145, 0.78) 25%,
+      rgba(119, 237, 145, 0.78) 42%,
+      rgba(119, 237, 180, 0.78) 63%,
+      rgba(126, 255, 155, 0.78) 80%,
+      rgba(44, 149, 67, 0.78) 100%
+    );
     z-index: -9;
   }
-
-
-
-
-
+  .scroll_horisontal {
+    max-width: 100%;
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+  }
 
   .filter_white {
-    filter: brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(996%) hue-rotate(243deg) brightness(122%) contrast(100%);
+    filter: brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(996%)
+      hue-rotate(243deg) brightness(122%) contrast(100%);
   }
 
   .filter_black {
-    filter: brightness(0) saturate(100%) invert(0%) sepia(79%) saturate(6758%) hue-rotate(148deg) brightness(98%) contrast(109%);
+    filter: brightness(0) saturate(100%) invert(0%) sepia(79%) saturate(6758%)
+      hue-rotate(148deg) brightness(98%) contrast(109%);
   }
 }

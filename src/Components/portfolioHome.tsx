@@ -3,7 +3,7 @@ import { CoinPortfolio } from "./ui/coinPortfolio"
 
 export const PortfolioHome = () => {
     return (
-        <div className='w-1/4 bg-green_light_1  rounded-3xl text-black'>
+        <div className='w-full lg:w-1/4 bg-green_light_1  rounded-3xl text-black'>
             <div className="title flex justify-between items-center  p-4 border-b-2 border-gray-700">
                 <h4 className="font-L_semiBold text-h4 ">My Portfolio</h4>
                 <button className=" rounded-full p-2 aspect-square bg-green_light">

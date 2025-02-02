@@ -26,10 +26,11 @@ export default {
 			fontSize: {
 				'h1': ['32px', { lineHeight: '40px' }],
 				'h1-b': ['58px'],
+				'h1-bm': ['48px'],
 				'h2': ['54px', { lineHeight: '60px', fontWeight: 'bold', letterSpacing: '-0.036em' }],
 				'h2-m': ['28px' ],
 				'h4': ['24px'],
-				'h5': ['18px', { fontWeight: 'bold' }],
+				'h5': ['20px'],
 				'b-large': ['18px', { lineHeight: '22px'}],
 				'b-small': ['14px'],
 				'b-medium': ['16px'],

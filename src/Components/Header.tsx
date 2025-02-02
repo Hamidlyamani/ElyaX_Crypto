@@ -32,18 +32,18 @@ const Header = ({ namePage }: HeaderProps) => {
                     </div>
                 </div>
                 <div className="flex items-start gap-5 header_left">
-                    <div className="search">
+                    <div className="search hidden">
                         <Search />
                     </div>
                     <div className="flex items-start gap-3 user_netf">
-                        <div className="flex items-center w-[50px] h-[50px] justify-center rounded-full notif bg-gray-50 dark:bg-sidebar">
+                        <div className="hidden md:flex items-center w-[50px] h-[50px] justify-center rounded-full notif bg-gray-50 dark:bg-sidebar">
                             <img src={notif} alt="" className='filter_black dark:filter_white' />
                         </div>
                         <div className="netf_list">
                             <div className="flex items-center gap-2 user_item">
                                 <img src={user} alt="" />
                                 <div>
-                                    <select id="countries" className="block text-black bg-transparent dark:text-white outline-0 dark:placeholder-gray ">
+                                    <select id="countries" className="hidden md:block text-black bg-transparent dark:text-white outline-0 dark:placeholder-gray ">
                                         <option selected className='p-4 m-4 border-0 dark:bg-sidebar outline-0 focus:bg-gray'>Alexim</option>
                                         <option value="US" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>My profile</option>
                                         <option value="CA" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>Logout</option>

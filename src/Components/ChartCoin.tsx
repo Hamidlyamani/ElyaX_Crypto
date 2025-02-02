@@ -5,8 +5,8 @@ import { ChartUi } from './ui/chartui'
 
 export const ChartCoin = () => {
     return (
-        <div className='w-3/4 bg-gray-10 dark:bg-black_coin rounded-3xl'>
-            <div className="charthader flex justify-between items-center p-4 px-8 border-b-2 border-gray-200 dark:border-gray-900 " >
+        <div className='w-full lg:w-3/4 bg-gray-10 dark:bg-black_coin rounded-3xl'>
+            <div className="charthader flex justify-between items-center p-4 px-4 lg:px-8 border-b-2 border-gray-200 dark:border-gray-900 " >
                 <h4 className='font-L_semiBold text-h4'>Analytics</h4>
                 <div className="flex gap-6 items-center">
                     <button><img src={filter} alt="" /></button>
@@ -23,7 +23,7 @@ export const ChartCoin = () => {
                 </div>
 
             </div>
-            <div className="content p-2 px-8">
+            <div className="content p-2 px-4 lg:px-8">
                 <div className="flex justify-between items-start">
                     <div className="left">
                         <select id="countries" className="block text-gray-700 b-b-small bg-transparent font-L_light dark:text-gray-500 w-32 outline-0 dark:placeholder-gray-900 ">
@@ -33,12 +33,12 @@ export const ChartCoin = () => {
                         </select>
                         <h6 className="text-h2-m font-L_medium">$38,252.02</h6>
                     </div>
-                    <div className="right flex gap-2 p-2">
-                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4 text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900 " data-active="true">1h</div>
-                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">3h</div>
-                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1d</div>
-                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1w</div>
-                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-4  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1m</div>
+                    <div className="right flex gap-1 lg:gap-2 p-1 lg:p-2">
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-2 lg:px-4 cursor-pointer text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900 data-[active=true]:dark:bg-yallow2 data-[active=true]:dark:text-gray-900" data-active="true">1h</div>
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-2 lg:px-4 cursor-pointer  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">3h</div>
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-2 lg:px-4 cursor-pointer  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1d</div>
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-2 lg:px-4 cursor-pointer  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1w</div>
+                        <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-2 lg:px-4 cursor-pointer  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1m</div>
                     </div>
                 </div>
                 <div className="chart">

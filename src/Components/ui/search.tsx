@@ -10,7 +10,16 @@ export const Search = () => {
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </button>
-                <input type="text" id="simple-search" className="bg-gray    text-gray-900 h-[50px] text-sm rounded-full focus:outline-0 block w-full ps-14 p-2.5 bg-gray-10 dark:bg-sidebar  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 placeholder:italic placeholder:font-L_light placeholder:text-tag placeholder:text-gray" placeholder="Search your coins..." required />
+                <input type="text" id="simple-search" list='coins_datalist' className="bg-gray    text-gray-900 h-[50px] text-sm rounded-full focus:outline-0 block w-full ps-14 p-2.5 bg-gray-10 dark:bg-sidebar  dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 placeholder:italic placeholder:font-L_light placeholder:text-tag placeholder:text-gray" placeholder="Search your coins..." required />
+                <datalist id="coins_datalist">
+                    <option value="Bitcoin"></option>
+                    <option value="Litecoin"></option>
+                    <option value="Ethereum"></option>
+                    <option value="Solana"></option>
+                    <option value="Tether"></option>
+                    <option value="Ripple"></option>
+                </datalist>
+            
             </div>
         </div>
     )

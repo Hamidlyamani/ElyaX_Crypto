@@ -38,12 +38,14 @@ const Page = () => {
 
 
   return (
+    <div className="overflow-hidden"> 
     <SidebarProvider>
       <AppSidebar selectedMenuItem={selectedMenuItem} onMenuItemClick={setSelectedMenuItem} />
       <SidebarInset>
         {renderComponent()}
       </SidebarInset>
     </SidebarProvider>
+    </div>
   )
 }
 export default Page;

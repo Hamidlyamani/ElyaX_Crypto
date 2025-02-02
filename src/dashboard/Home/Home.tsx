@@ -7,12 +7,13 @@ import { ChartCoin } from "@/Components/ChartCoin";
 
 export default function Home() {
 
-  return (<div className="mx-8 my-4">
+  return (
+  <div className="mx-4 md:mx-8 my-4 ">
     <Header namePage="dachboard" />
 
     <Balance />
     <Coins />
-    <div className="flex gap-4  justify-between">
+      <div className="flex gap-4 flex-col-reverse lg:flex-row  justify-between">
       <PortfolioHome />
       <ChartCoin />
     </div>
