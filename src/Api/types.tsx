@@ -2,7 +2,8 @@
 export interface coinType {
     id: number;
     name: string;
-    abrev: string;
-    price: number;
-    change: number;
+    symbol: string;
+    image: string;
+current_price: number;
+    price_change_percentage_24h: number;
 };

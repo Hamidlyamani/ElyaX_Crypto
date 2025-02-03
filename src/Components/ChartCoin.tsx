@@ -41,7 +41,7 @@ export const ChartCoin = () => {
                         <div className="bg-gray-50 text-gray-700 dark:bg-gray-900  dark:text-gray-800 p-1 px-2 lg:px-4 cursor-pointer  text-tag-small flex items-center  rounded-full data-[active=true]:bg-yallow2 data-[active=true]:text-gray-900">1m</div>
                     </div>
                 </div>
-                <div className="chart">
+                <div className="chart lg:p-6 pt-4 h-[300px]">
                     <ChartUi/>
                 </div>
             </div>

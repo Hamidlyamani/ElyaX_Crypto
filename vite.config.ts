@@ -9,4 +9,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src/'), // Map '@' to the 'src' directory
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://api.coingecko.com/api/v3',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  }
 });

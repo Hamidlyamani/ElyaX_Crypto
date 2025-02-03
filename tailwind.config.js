@@ -29,7 +29,7 @@ export default {
 				'h1-bm': ['48px'],
 				'h2': ['54px', { lineHeight: '60px', fontWeight: 'bold', letterSpacing: '-0.036em' }],
 				'h2-m': ['28px' ],
-				'h4': ['24px'],
+				'h4': ['22px'],
 				'h5': ['20px'],
 				'b-large': ['18px', { lineHeight: '22px'}],
 				'b-small': ['14px'],

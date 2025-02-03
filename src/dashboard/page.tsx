@@ -38,7 +38,7 @@ const Page = () => {
 
 
   return (
-    <div className="overflow-hidden"> 
+    <div > 
     <SidebarProvider>
       <AppSidebar selectedMenuItem={selectedMenuItem} onMenuItemClick={setSelectedMenuItem} />
       <SidebarInset>
