@@ -11,7 +11,7 @@ export const Coins = () => {
 
     useEffect(() => {
         (async () => {
-            const data = await callApi.getSpecificCoins(['bitcoin', 'solana', 'shiba-inu', 'official-trump']);
+            const data = await callApi.getSpecificCoins(['bitcoin', 'solana', 'uniswap', 'official-trump']);
             setCoins(data);
         })()
     }, []); 

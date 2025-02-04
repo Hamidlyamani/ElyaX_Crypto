@@ -1,6 +1,5 @@
 import change1 from "@/assets/imgs/Vector.png";
 import change2 from "@/assets/imgs/Vector2.png";
-import graph from "@/assets/imgs/graph.png";
 import { coinType } from '@/Api/types'
 import { ChartUiSmall } from "./chartUiSmall";
 
@@ -28,10 +27,10 @@ export const Coin = (data: coinType) => {
             </div>
             <div className="prix flex mt-8 gap-1 justify-between items-end">
                 <div>
-                    <div className="text-h5 md:text-h4 font-L_medium ">{data.current_price}</div>
+                    <div className="text-h5 md:text-h4 font-L_medium ">{data.current_price.toFixed(2)}</div>
                     <span className={data.price_change_percentage_24h >= 0 ? " text-green_light_1 font-L_semiBold text-b-small" : "text-orange font-L_semiBold text-b-small"}>{data.price_change_percentage_24h.toFixed(2)}%</span>
                 </div>
-                <div className="chart h-[60px] w-1/2 min-w-[100px] ">
+                <div className="chart h-[60px] w-1/2 min-w-[50px] ">
                     <ChartUiSmall/>
                 </div>
             </div>

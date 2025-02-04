@@ -3,50 +3,72 @@ import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import {  CardContent } from "@/Components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/Components/ui/chart"
-const chartData = [
-    { month: "January",  mobile: 80 },
-    { month: "February", mobile: 200 },
-    { month: "March", mobile: 120 },
-    { month: "April",  mobile: 190 },
-    { month: "May",  mobile: 130 },
-    { month: "June", mobile: 140 },
-]
+import { useContext, useEffect, useState } from "react"
+import { coinContext } from "@/contextes/coinContext"
 
-const chartConfig = {
-    mobile: {
-        label: "Mobile",
-        color: "hsl(var(--chart-2))",
-    },
-} satisfies ChartConfig
 
 export function ChartUi() {
+    const callApi = useContext(coinContext)
+    const [chartcoins, setChartCoins] = useState([]);
+    const chartinfo = {
+        coinId: "ripple",
+        vs_currency: "usd",
+        time: 1,
+        time_trensfer:"hour",
+        color: "hsl(var(--chart-2))",
+}
+
+    const chartConfig = {
+        price: {
+            label: "USD",
+            color: chartinfo.color,
+        },
+    } satisfies ChartConfig
+
+    useEffect(() => {
+        (async () => {
+            const data = await callApi.getMarketChart(chartinfo.coinId,chartinfo.vs_currency,chartinfo.time);
+
+
+            const chartData = data.prices.map(([timestamp, price]) => ({
+
+                time: new Date(timestamp).toISOString(), // Convert timestamp to ISO string
+
+                price: Number(price.toFixed(2))
+            }));
+            setChartCoins(chartData);    
+        })()
+    }, []); 
+    const minPrice = chartcoins.length > 0 ? Math.min(...chartcoins.map(d => d.price)) : 0;
+    const maxPrice = chartcoins.length > 0 ? Math.max(...chartcoins.map(d => d.price)) : 100; // Set a default max if no data
+
     return (
        <>
             <CardContent>
                 <ChartContainer config={chartConfig}>
                     <AreaChart
                         accessibilityLayer
-                        data={chartData}
+                        data={chartcoins}
                         margin={{
-                            left: -10,
+                            left: 10,
                             right: 12,
                         }}
                     >
                         <CartesianGrid vertical={false} />
                         <XAxis
-                            dataKey="month"
+                            dataKey="price"  // ✅ Correspond maintenant à votre structure de données
                             tickLine={false}
                             axisLine={false}
-                            tickMargin={8}
-                            tickFormatter={(value) => value.slice(0, 3)}
+                            tickMargin={2}
+                            tickFormatter={(value) => new Date(value).toLocaleTimeString()}
                         />
                         <YAxis
-
+                            type="number"
                             tickLine={false}
                             axisLine={false}
                             tickMargin={8}
-                            tickCount={5}
-
+                            allowDataOverflow={true}
+                            domain={[minPrice - minPrice * 0.01, maxPrice + maxPrice * 0.01]}
                         />
                         <ChartTooltip cursor={true} content={<ChartTooltipContent />} />
                         <defs>
@@ -54,17 +76,17 @@ export function ChartUi() {
 
                                 <stop
 
-                                    offset="5%"
+                                    offset="0.1%"
 
                                     stopColor="var(--color-mobile)"
 
-                                    stopOpacity={0.8}
+                                    stopOpacity={1}
 
                                 />
 
                                 <stop
 
-                                    offset="95%"
+                                    offset="100%"
 
                                     stopColor="var(--color-mobile)"
 
@@ -76,11 +98,11 @@ export function ChartUi() {
 
                         </defs>
                         <Area
-                            dataKey="mobile"
+                            dataKey="price"
                             type="natural"
                             fill="url(#fillMobile)"
-                            fillOpacity={0.4}
-                            stroke="var(--color-mobile)"
+                            fillOpacity={0.3}
+                            stroke="green"
                             stackId="a"
                         />
                      

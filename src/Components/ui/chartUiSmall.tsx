@@ -23,14 +23,7 @@ const chartConfig = {
 export function ChartUiSmall() {
     
 
-    // const [coins, setCoins] = useState([]);
-    // useEffect(() => {
-    //     (async () => {
-    //         const data = await CoinApi.getMarketChart(['bitcoin', 'solana', 'shiba-inu', 'official-trump']);
-    //         setCoins(data);
-    //         // console.log(data)
-    //     })()
-    // }, []); 
+   
     return (
        <>
             <CardContent>
