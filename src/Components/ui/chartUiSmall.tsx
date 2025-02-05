@@ -3,41 +3,81 @@ import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import {  CardContent } from "@/Components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/Components/ui/chart"
-import { useEffect, useState } from "react"
-const chartData = [
-    { month: "January",  mobile: 80 },
-    { month: "February", mobile: 200 },
-    { month: "March", mobile: 120 },
-    { month: "April",  mobile: 190 },
-    { month: "May",  mobile: 130 },
-    { month: "June", mobile: 140 },
-]
+import { useContext, useEffect, useState } from "react"
+import { coinContext } from "@/contextes/coinContext"
+import { Chartinfo } from "@/Api/types"
+// const chartData = [
+//     { month: "January",  mobile: 80 },
+//     { month: "February", mobile: 200 },
+//     { month: "March", mobile: 120 },
+//     { month: "April",  mobile: 190 },
+//     { month: "May",  mobile: 130 },
+//     { month: "June", mobile: 140 },
+// ]
 
-const chartConfig = {
-    mobile: {
-        label: "Mobile",
-        color: "hsl(var(--chart-2))",
-    },
-} satisfies ChartConfig
+// const chartConfig = {
+//     mobile: {
+//         label: "Mobile",
+//         color: "hsl(var(--chart-2))",
+//     },
+// } satisfies ChartConfig
 
-export function ChartUiSmall() {
+const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
     
 
+    const callApi = useContext(coinContext)
+    const [chartcoinsSmall, setChartCoinsSmall] = useState([]);
+
+    const chartConfigsmall = {
+        price: {
+            label: "USD",
+        },
+    } satisfies ChartConfig
+    useEffect(() => {
+        (async () => {
+              const data = await callApi.getMarketChart(chartinfo.coinId, chartinfo.vs_currency, chartinfo.time);
+
+            const chartData = data.prices.map(([timestamp, price]) => ({
+                time: chartinfo.time <= 1
+                    ? new Date(timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+                    : new Date(timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+                price: Number(price)
+            }));
+
+            setChartCoinsSmall(chartData);
+        })();
+    }, [chartinfo]);
+    const minPrice = chartcoinsSmall.length > 0 ? Math.min(...chartcoinsSmall.map(d => d.price.toFixed(2))) : 0;
+    const maxPrice = chartcoinsSmall.length > 0 ? Math.max(...chartcoinsSmall.map(d => d.price.toFixed(2))) : 100; 
    
     return (
        <>
             <CardContent>
-                <ChartContainer config={chartConfig}>
+                <ChartContainer config={chartConfigsmall}>
                     <AreaChart
                         accessibilityLayer
-                        data={chartData}
+                        data={chartcoinsSmall}
                         margin={{
-                            left: -10,
-                            right: 12,
+                            left: 40,
+                            right: 0,
                         }}
                     >
                         <CartesianGrid vertical={false} />
                        
+                        <YAxis
+                            type="number"
+                            tickLine={false}
+                            axisLine={false}
+                            tickMargin={8}
+                            allowDataOverflow={true}
+                            domain={[
+                                parseFloat((minPrice - minPrice * 0.01).toFixed(2)),
+                                parseFloat((maxPrice + maxPrice * 0.01).toFixed(2))
+                            ]}
+                            tick={false}  // Hides the ticks
+                            hide={true}  // Hides the Y-axis completely
+                        />
+
                         <ChartTooltip cursor={true} content={<ChartTooltipContent />} />
                         <defs>
                             <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
@@ -46,7 +86,7 @@ export function ChartUiSmall() {
 
                                     offset="5%"
 
-                                    stopColor="var(--color-mobile)"
+                                    stopColor={chartinfo.color}
 
                                     stopOpacity={0.8}
 
@@ -56,7 +96,7 @@ export function ChartUiSmall() {
 
                                     offset="95%"
 
-                                    stopColor="var(--color-mobile)"
+                                    stopColor={chartinfo.color}
 
                                     stopOpacity={0.1}
 
@@ -66,11 +106,11 @@ export function ChartUiSmall() {
 
                         </defs>
                         <Area
-                            dataKey="mobile"
+                            dataKey="price"
                             type="natural"
                             fill="url(#fillMobile)"
                             fillOpacity={0.4}
-                            stroke="var(--color-mobile)"
+                            stroke={chartinfo.strok}
                             stackId="a"
                         />
                      
@@ -80,3 +120,4 @@ export function ChartUiSmall() {
        </>
     )
 }
+export default ChartUiSmall 

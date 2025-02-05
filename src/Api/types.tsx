@@ -7,3 +7,15 @@ export interface coinType {
 current_price: number;
     price_change_percentage_24h: number;
 };
+
+export interface Chartinfo {
+        coinId: string;
+        vs_currency: string;
+        time: number;
+        color: string;
+        strok?: string;
+}
+export interface TimeSelectorProps {
+    activeTime: number;
+    onTimeChange: (time: number) => void;
+}

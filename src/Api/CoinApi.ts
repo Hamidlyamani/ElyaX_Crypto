@@ -31,7 +31,7 @@ export const CoinApi = {
             throw error;
         }
     },
-    getMarketChart: async (coinId = 'bitcoin', vs_currency = 'usd', days = 4) => {
+    getMarketChart: async (coinId = 'bitcoin', vs_currency = 'usd', days = 1) => {
         try {
             const response = await customAxios.get(`/${coinId}/market_chart`, {
                 params: {

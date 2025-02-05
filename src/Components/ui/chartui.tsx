@@ -5,42 +5,36 @@ import {  CardContent } from "@/Components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/Components/ui/chart"
 import { useContext, useEffect, useState } from "react"
 import { coinContext } from "@/contextes/coinContext"
+import { Chartinfo } from "@/Api/types"
 
 
-export function ChartUi() {
+const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
+
     const callApi = useContext(coinContext)
     const [chartcoins, setChartCoins] = useState([]);
-    const chartinfo = {
-        coinId: "ripple",
-        vs_currency: "usd",
-        time: 1,
-        time_trensfer:"hour",
-        color: "hsl(var(--chart-2))",
-}
-
+  
     const chartConfig = {
         price: {
             label: "USD",
             color: chartinfo.color,
         },
     } satisfies ChartConfig
-
     useEffect(() => {
         (async () => {
-            const data = await callApi.getMarketChart(chartinfo.coinId,chartinfo.vs_currency,chartinfo.time);
-
+            const data = await callApi.getMarketChart(chartinfo.coinId, chartinfo.vs_currency, chartinfo.time);
 
             const chartData = data.prices.map(([timestamp, price]) => ({
-
-                time: new Date(timestamp).toISOString(), // Convert timestamp to ISO string
-
-                price: Number(price.toFixed(2))
+                time: chartinfo.time <= 1
+                    ? new Date(timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+                    : new Date(timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+                price: Number(price)
             }));
-            setChartCoins(chartData);    
-        })()
-    }, []); 
-    const minPrice = chartcoins.length > 0 ? Math.min(...chartcoins.map(d => d.price)) : 0;
-    const maxPrice = chartcoins.length > 0 ? Math.max(...chartcoins.map(d => d.price)) : 100; // Set a default max if no data
+
+            setChartCoins(chartData);
+        })();
+    }, [chartinfo]);
+    const minPrice = chartcoins.length > 0 ? Math.min(...chartcoins.map(d => d.price.toFixed(2))) : 0;
+    const maxPrice = chartcoins.length > 0 ? Math.max(...chartcoins.map(d => d.price.toFixed(2))) : 100; // Set a default max if no data
 
     return (
        <>
@@ -50,17 +44,16 @@ export function ChartUi() {
                         accessibilityLayer
                         data={chartcoins}
                         margin={{
-                            left: 10,
-                            right: 12,
+                            left: 30,
+                            right: 0,
                         }}
                     >
                         <CartesianGrid vertical={false} />
                         <XAxis
-                            dataKey="price"  // ✅ Correspond maintenant à votre structure de données
-                            tickLine={false}
+                            dataKey="time"  
+                            tickLine={true}
                             axisLine={false}
-                            tickMargin={2}
-                            tickFormatter={(value) => new Date(value).toLocaleTimeString()}
+                            tickMargin={8}
                         />
                         <YAxis
                             type="number"
@@ -68,7 +61,10 @@ export function ChartUi() {
                             axisLine={false}
                             tickMargin={8}
                             allowDataOverflow={true}
-                            domain={[minPrice - minPrice * 0.01, maxPrice + maxPrice * 0.01]}
+                            domain={[
+                                parseFloat((minPrice - minPrice * 0.01).toFixed(2)),
+                                parseFloat((maxPrice + maxPrice * 0.01).toFixed(2))
+                            ]}
                         />
                         <ChartTooltip cursor={true} content={<ChartTooltipContent />} />
                         <defs>
@@ -78,7 +74,7 @@ export function ChartUi() {
 
                                     offset="0.1%"
 
-                                    stopColor="var(--color-mobile)"
+                                    stopColor={chartinfo.color}
 
                                     stopOpacity={1}
 
@@ -88,7 +84,7 @@ export function ChartUi() {
 
                                     offset="100%"
 
-                                    stopColor="var(--color-mobile)"
+                                    stopColor={chartinfo.color}
 
                                     stopOpacity={0.1}
 
@@ -102,7 +98,7 @@ export function ChartUi() {
                             type="natural"
                             fill="url(#fillMobile)"
                             fillOpacity={0.3}
-                            stroke="green"
+                            stroke={chartinfo.strok}
                             stackId="a"
                         />
                      
@@ -112,3 +108,5 @@ export function ChartUi() {
        </>
     )
 }
+
+export default ChartUi
