@@ -1,7 +1,7 @@
 
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
-import {  CardContent } from "@/Components/ui/card"
+import { CardContent } from "@/Components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/Components/ui/chart"
 import { useContext, useEffect, useState } from "react"
 import { coinContext } from "@/contextes/coinContext"
@@ -12,7 +12,7 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
 
     const callApi = useContext(coinContext)
     const [chartcoins, setChartCoins] = useState([]);
-  
+
     const chartConfig = {
         price: {
             label: "USD",
@@ -37,7 +37,7 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
     const maxPrice = chartcoins.length > 0 ? Math.max(...chartcoins.map(d => d.price.toFixed(2))) : 100; // Set a default max if no data
 
     return (
-       <>
+        <>
             <CardContent>
                 <ChartContainer config={chartConfig}>
                     <AreaChart
@@ -50,7 +50,7 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                     >
                         <CartesianGrid vertical={false} />
                         <XAxis
-                            dataKey="time"  
+                            dataKey="time"
                             tickLine={true}
                             axisLine={false}
                             tickMargin={8}
@@ -68,44 +68,25 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                         />
                         <ChartTooltip cursor={true} content={<ChartTooltipContent />} />
                         <defs>
-                            <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
-
-                                <stop
-
-                                    offset="0.1%"
-
-                                    stopColor={chartinfo.color}
-
-                                    stopOpacity={1}
-
-                                />
-
-                                <stop
-
-                                    offset="100%"
-
-                                    stopColor={chartinfo.color}
-
-                                    stopOpacity={0.1}
-
-                                />
-
+                            <linearGradient id={`fill-${chartinfo.coinId}`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0.1%" stopColor={chartinfo.color} stopOpacity={0.8} />
+                                <stop offset="100%" stopColor={chartinfo.color} stopOpacity={0.1} />
                             </linearGradient>
 
                         </defs>
                         <Area
                             dataKey="price"
                             type="natural"
-                            fill="url(#fillMobile)"
+                            fill={`url(#fill-${chartinfo.coinId})`}
                             fillOpacity={0.3}
                             stroke={chartinfo.strok}
                             stackId="a"
                         />
-                     
+
                     </AreaChart>
                 </ChartContainer>
             </CardContent>
-       </>
+        </>
     )
 }
 

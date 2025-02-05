@@ -7,10 +7,11 @@ import ChartUiSmall from "./chartUiSmall";
 export const Coin = (data: coinType) => {
 
     const chartdata: Chartinfo = {
-        coinId: data.id, 
+        coinId: data.id.toString(),
         vs_currency: "usd",
-        time: "0.04", // Convert to string
-        color: "white",
+        time: 0.02, // Convert to string
+        color: "#03E1FF",
+        strok: "#f7931a"
     };
 
     return (

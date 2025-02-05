@@ -1,7 +1,7 @@
 
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
-import {  CardContent } from "@/Components/ui/card"
+import { CardContent } from "@/Components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/Components/ui/chart"
 import { useContext, useEffect, useState } from "react"
 import { coinContext } from "@/contextes/coinContext"
@@ -23,7 +23,7 @@ import { Chartinfo } from "@/Api/types"
 // } satisfies ChartConfig
 
 const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
-    
+
 
     const callApi = useContext(coinContext)
     const [chartcoinsSmall, setChartCoinsSmall] = useState([]);
@@ -31,11 +31,13 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
     const chartConfigsmall = {
         price: {
             label: "USD",
+            color: chartinfo.color,
         },
     } satisfies ChartConfig
+
     useEffect(() => {
         (async () => {
-              const data = await callApi.getMarketChart(chartinfo.coinId, chartinfo.vs_currency, chartinfo.time);
+            const data = await callApi.getMarketChart(chartinfo.coinId, chartinfo.vs_currency, chartinfo.time);
 
             const chartData = data.prices.map(([timestamp, price]) => ({
                 time: chartinfo.time <= 1
@@ -48,10 +50,10 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
         })();
     }, [chartinfo]);
     const minPrice = chartcoinsSmall.length > 0 ? Math.min(...chartcoinsSmall.map(d => d.price.toFixed(2))) : 0;
-    const maxPrice = chartcoinsSmall.length > 0 ? Math.max(...chartcoinsSmall.map(d => d.price.toFixed(2))) : 100; 
-   
+    const maxPrice = chartcoinsSmall.length > 0 ? Math.max(...chartcoinsSmall.map(d => d.price.toFixed(2))) : 100;
+
     return (
-       <>
+        <>
             <CardContent>
                 <ChartContainer config={chartConfigsmall}>
                     <AreaChart
@@ -63,7 +65,7 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                         }}
                     >
                         <CartesianGrid vertical={false} />
-                       
+
                         <YAxis
                             type="number"
                             tickLine={false}
@@ -74,50 +76,31 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                                 parseFloat((minPrice - minPrice * 0.01).toFixed(2)),
                                 parseFloat((maxPrice + maxPrice * 0.01).toFixed(2))
                             ]}
-                            tick={false}  // Hides the ticks
-                            hide={true}  // Hides the Y-axis completely
+                            tick={false}
+                            hide={true}
                         />
 
                         <ChartTooltip cursor={true} content={<ChartTooltipContent />} />
                         <defs>
-                            <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
-
-                                <stop
-
-                                    offset="5%"
-
-                                    stopColor={chartinfo.color}
-
-                                    stopOpacity={0.8}
-
-                                />
-
-                                <stop
-
-                                    offset="95%"
-
-                                    stopColor={chartinfo.color}
-
-                                    stopOpacity={0.1}
-
-                                />
-
+                            <linearGradient id={`fill-${chartinfo.coinId}-1`} x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0.1%" stopColor={chartinfo.color} stopOpacity={0.8} />
+                                <stop offset="100%" stopColor={chartinfo.color} stopOpacity={0.1} />
                             </linearGradient>
 
                         </defs>
                         <Area
                             dataKey="price"
                             type="natural"
-                            fill="url(#fillMobile)"
+                            fill={`url(#fill-${chartinfo.coinId}-1)`}
                             fillOpacity={0.4}
                             stroke={chartinfo.strok}
                             stackId="a"
                         />
-                     
+
                     </AreaChart>
                 </ChartContainer>
             </CardContent>
-       </>
+        </>
     )
 }
 export default ChartUiSmall 
