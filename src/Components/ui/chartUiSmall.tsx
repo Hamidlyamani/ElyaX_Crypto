@@ -35,20 +35,7 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
         },
     } satisfies ChartConfig
 
-    useEffect(() => {
-        (async () => {
-            const data = await callApi.getMarketChart(chartinfo.coinId, chartinfo.vs_currency, chartinfo.time);
 
-            const chartData = data.prices.map(([timestamp, price]) => ({
-                time: chartinfo.time <= 1
-                    ? new Date(timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
-                    : new Date(timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-                price: Number(price)
-            }));
-
-            setChartCoinsSmall(chartData);
-        })();
-    }, [chartinfo]);
     const minPrice = chartcoinsSmall.length > 0 ? Math.min(...chartcoinsSmall.map(d => d.price.toFixed(2))) : 0;
     const maxPrice = chartcoinsSmall.length > 0 ? Math.max(...chartcoinsSmall.map(d => d.price.toFixed(2))) : 100;
 
