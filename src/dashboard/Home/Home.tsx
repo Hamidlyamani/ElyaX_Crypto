@@ -7,12 +7,11 @@ import { useCoinData } from "@/contextes/coinDataContext";
 
 
 export default function Home() {
-  const { coins, chartData, loading, error } = useCoinData();
-  console.log("loading")
-  console.log(coins)
+  const { coins } = useCoinData();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>{error}</p>;
 
   return (
     <div className="mx-4 md:mx-8 my-4 ">

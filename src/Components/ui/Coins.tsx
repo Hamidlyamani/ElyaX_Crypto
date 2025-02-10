@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from 'react'
+
 import { Coin } from './coin'
 import { useCoinData } from '@/contextes/coinDataContext'
 
-const colors = ["orange", '#03E1FF', "pink", "yallow"]
-const coinsselected = ['bitcoin', 'ethereum', 'ripple', 'solana']
+const colors = ["orange", 'gray', "#0074e0", "#00e0e0"]
+const coinsselected = ['bitcoin', 'ethereum', 'fasttoken', 'solana']
 
 export const Coins = () => {
 
@@ -18,7 +18,6 @@ export const Coins = () => {
         }));
 
     console.log(selectedCoinsWithColor);
-    // console.log(chartData)
     return (
         <div className='flex  justify-between flex-wrap my-4 lg:gap-2 lg:flex-nowrap '>
             {selectedCoinsWithColor.map((item) => (

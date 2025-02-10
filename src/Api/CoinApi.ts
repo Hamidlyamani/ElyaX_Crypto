@@ -1,11 +1,10 @@
-import customAxios from './axios.ts';
-import { AxiosResponse } from 'axios';
-import { Coin } from './types';
+import customAxios from './axios';
+import { chartRep, coinType } from './types';
 
 export const CoinApi = {
-    getData: async (vs_currency = 'usd'): Promise<Coin[]> => {
+    getData: async (vs_currency = 'usd'): Promise<coinType[]> => {
         try {
-            const response: AxiosResponse<Coin[]> = await customAxios.get('/markets', {
+            const response = await customAxios.get<coinType[]>('/markets', {
                 params: {
                     vs_currency,
                     order: 'market_cap_desc',
@@ -35,7 +34,7 @@ export const CoinApi = {
     },
     getMarketChart: async (coinId = 'bitcoin', vs_currency = 'usd', days = 1) => {
         try {
-            const response = await customAxios.get(`/${coinId}/market_chart`, {
+            const response = await customAxios.get<chartRep[]>(`/${coinId}/market_chart`, {
                 params: {
                     vs_currency,
                     days

@@ -19,20 +19,7 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
             color: chartinfo.color,
         },
     } satisfies ChartConfig
-    useEffect(() => {
-        (async () => {
-            const data = await callApi.getMarketChart(chartinfo.coinId, chartinfo.vs_currency, chartinfo.time);
 
-            const chartData = data.prices.map(([timestamp, price]) => ({
-                time: chartinfo.time <= 1
-                    ? new Date(timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
-                    : new Date(timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
-                price: Number(price)
-            }));
-
-            setChartCoins(chartData);
-        })();
-    }, [chartinfo]);
     const minPrice = chartcoins.length > 0 ? Math.min(...chartcoins.map(d => d.price.toFixed(2))) : 0;
     const maxPrice = chartcoins.length > 0 ? Math.max(...chartcoins.map(d => d.price.toFixed(2))) : 100; // Set a default max if no data
 

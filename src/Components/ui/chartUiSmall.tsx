@@ -1,32 +1,13 @@
-
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
+import { Area, AreaChart, CartesianGrid, YAxis } from "recharts"
 
 import { CardContent } from "@/Components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/Components/ui/chart"
-import { useContext, useEffect, useState } from "react"
-import { coinContext } from "@/contextes/coinContext"
-import { Chartinfo } from "@/Api/types"
-// const chartData = [
-//     { month: "January",  mobile: 80 },
-//     { month: "February", mobile: 200 },
-//     { month: "March", mobile: 120 },
-//     { month: "April",  mobile: 190 },
-//     { month: "May",  mobile: 130 },
-//     { month: "June", mobile: 140 },
-// ]
 
-// const chartConfig = {
-//     mobile: {
-//         label: "Mobile",
-//         color: "hsl(var(--chart-2))",
-//     },
-// } satisfies ChartConfig
+import { Chartinfo } from "@/Api/types"
+
 
 const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
 
-
-    const callApi = useContext(coinContext)
-    const [chartcoinsSmall, setChartCoinsSmall] = useState([]);
 
     const chartConfigsmall = {
         price: {
@@ -35,9 +16,8 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
         },
     } satisfies ChartConfig
 
-
-    const minPrice = chartcoinsSmall.length > 0 ? Math.min(...chartcoinsSmall.map(d => d.price.toFixed(2))) : 0;
-    const maxPrice = chartcoinsSmall.length > 0 ? Math.max(...chartcoinsSmall.map(d => d.price.toFixed(2))) : 100;
+    const minPrice = chartinfo.chart.length > 0 ? Math.min(...chartinfo.chart.map(d => d.price)) : 0;
+    const maxPrice = chartinfo.chart.length > 0 ? Math.max(...chartinfo.chart.map(d => d.price)) : 100;
 
     return (
         <>
@@ -45,7 +25,7 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                 <ChartContainer config={chartConfigsmall}>
                     <AreaChart
                         accessibilityLayer
-                        data={chartcoinsSmall}
+                        data={chartinfo.chart}
                         margin={{
                             left: 40,
                             right: 0,
@@ -80,7 +60,7 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                             type="natural"
                             fill={`url(#fill-${chartinfo.coinId}-1)`}
                             fillOpacity={0.4}
-                            stroke={chartinfo.strok}
+                            stroke="rgb(119 237 145)"
                             stackId="a"
                         />
 

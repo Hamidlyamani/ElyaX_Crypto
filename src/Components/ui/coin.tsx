@@ -8,9 +8,9 @@ export const Coin = (data: coinType) => {
 
     const chartdata: Chartinfo = {
         coinId: data.id.toString(),
-        chartdata: data.chart,
+        chart: data.chart,
         color: data.color,
-        // strok: "#f7931a"
+
     };
     console.log(data.chart)
     return (
