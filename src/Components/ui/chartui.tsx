@@ -10,8 +10,7 @@ import { Chartinfo } from "@/Api/types"
 
 const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
 
-    const callApi = useContext(coinContext)
-    const [chartcoins, setChartCoins] = useState([]);
+    const [chartcoins, setChartCoins] = useState();
 
     const chartConfig = {
         price: {
@@ -19,9 +18,10 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
             color: chartinfo.color,
         },
     } satisfies ChartConfig
-
-    const minPrice = chartcoins.length > 0 ? Math.min(...chartcoins.map(d => d.price.toFixed(2))) : 0;
-    const maxPrice = chartcoins.length > 0 ? Math.max(...chartcoins.map(d => d.price.toFixed(2))) : 100; // Set a default max if no data
+    console.log("---------------------------------------")
+    console.log(chartinfo.chart)
+    // const minPrice = chartinfo.chart.length > 0 ? Math.min(...chartinfo.chart.map(d => d.price.toFixed(2))) : 0;
+    // const maxPrice = chartinfo.chart.length > 0 ? Math.max(...chartinfo.chart.map(d => d.price.toFixed(2))) : 100; // Set a default max if no data
 
     return (
         <>
@@ -29,7 +29,7 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                 <ChartContainer config={chartConfig}>
                     <AreaChart
                         accessibilityLayer
-                        data={chartcoins}
+                        data={chartinfo.chart}
                         margin={{
                             left: 30,
                             right: 0,

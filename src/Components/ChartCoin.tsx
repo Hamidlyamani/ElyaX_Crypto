@@ -5,9 +5,12 @@ import TimeSelector from './ui/TimeSelector'
 import { useState } from 'react'
 import { Chartinfo } from '@/Api/types'
 import ChartUiSmall from './ui/chartUiSmall'
+import { useCoinData } from '@/contextes/coinDataContext'
 
 
 export const ChartCoin = () => {
+    const { coins, chartData } = useCoinData();
+    console.log(chartData.bitcoin);
     const [chartinfo, setChartinfo] = useState<Chartinfo>({
         coinId: "bitcoin",
         vs_currency: "usd",

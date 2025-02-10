@@ -2,8 +2,8 @@
 import { Coin } from './coin'
 import { useCoinData } from '@/contextes/coinDataContext'
 
-const colors = ["orange", 'gray', "#0074e0", "#00e0e0"]
-const coinsselected = ['bitcoin', 'ethereum', 'fasttoken', 'solana']
+const colors = ["orange", 'gray', "#0074e0", "#e1ff00"]
+const coinsselected = ['bitcoin', 'ethereum', 'dogecoin', 'solana']
 
 export const Coins = () => {
 
@@ -16,7 +16,6 @@ export const Coins = () => {
             color: colors[index % colors.length], // Assign color
             chart: chartData[coin.id] || [] // Add the chart data for each coin
         }));
-
     console.log(selectedCoinsWithColor);
     return (
         <div className='flex  justify-between flex-wrap my-4 lg:gap-2 lg:flex-nowrap '>
