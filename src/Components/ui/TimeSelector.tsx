@@ -2,11 +2,11 @@ import { TimeSelectorProps } from "@/Api/types";
 
 
 const timeOptions = [
-    { label: "1h", value: 0.0416667,  },
+    { label: "1h", value: 0.0416667, },
     { label: "3h", value: 0.125, },
-    { label: "1d", value:1,},
+    { label: "1d", value: 1, },
     { label: "1w", value: 7, },
-    { label: "1m", value: 30,  },
+    { label: "1m", value: 30, },
 ];
 
 const TimeSelector: React.FC<TimeSelectorProps> = ({ activeTime, onTimeChange }) => {

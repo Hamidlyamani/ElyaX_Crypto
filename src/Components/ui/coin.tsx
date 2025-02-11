@@ -10,6 +10,7 @@ export const Coin = (data: coinType) => {
         coinId: data.id.toString(),
         chart: data.chart,
         color: data.color,
+        time: 1
     };
     return (
         <div className=' bg-gray-10 dark:bg-black_coin p-2 md:p-4  rounded-3xl m-1 flex flex-col justify-between  w-[calc(50%_-_8px)] lg:w-1/4 lg:m-0  '>

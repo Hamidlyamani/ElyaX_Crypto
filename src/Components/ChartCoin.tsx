@@ -4,24 +4,36 @@ import ChartUi from './ui/chartui'
 import TimeSelector from './ui/TimeSelector'
 import { useState } from 'react'
 import { Chartinfo } from '@/Api/types'
-import ChartUiSmall from './ui/chartUiSmall'
 import { useCoinData } from '@/contextes/coinDataContext'
+import { CoinApi } from '@/Api/CoinApi'
 
 
 export const ChartCoin = () => {
     const { coins, chartData } = useCoinData();
-    console.log(chartData.bitcoin);
     const [chartinfo, setChartinfo] = useState<Chartinfo>({
         coinId: "bitcoin",
+        chart: chartData.bitcoin,
         vs_currency: "usd",
         time: 0.4, // Default time
         color: "#f7931a",
         strok: "#f7931a",
     });
-
-
-    const handleTimeChange = (time: number) => {
+    console.log('==============================')
+    let chartResults: { [coinId: string]: { time: string; price: number }[] } = {};
+    const handleTimeChange = async (time: number) => {
         setChartinfo({ ...chartinfo, time }); // Ensure immediate update
+        try {
+            const data = await CoinApi.getMarketChart('bitcoin', "usd", time);
+            chartResults = data.prices.map(([timestamp, price]: [number, number]) => ({
+                time: time <= 1
+                    ? new Date(timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+                    : new Date(timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+                price: Number(price),
+            }));
+            setChartinfo({ ...chartinfo, chart: chartResults });
+        } catch (err) {
+            console.error("Error fetching coins:", err);
+        }
     };
     const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setChartinfo((prev) => ({ ...prev, vs_currency: event.target.value }));
@@ -49,11 +61,11 @@ export const ChartCoin = () => {
                 <div className="flex justify-between items-start">
                     <div className="left">
                         <select id="countries" value={chartinfo.vs_currency} onChange={handleCurrencyChange} className="block text-gray-700 b-b-small bg-transparent font-L_light dark:text-gray-500 w-32 outline-0 dark:placeholder-gray-900 ">
-                            <option defaultValue='true' value="usd" className='p-4 m-4 border-0 dark:bg-sidebar outline-0 focus:bg-gray'>Bitcoin/BTC</option>
+                            <option defaultValue='true' value="usd" className='p-4 m-4 border-0 dark:bg-sidebar outline-0 focus:bg-gray'>Bitcoin/USD</option>
                             <option value="eur" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>Bitcoin/EURO</option>
                             <option value="rub" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>Bitcoin/RUB</option>
                         </select>
-                        <h6 className="text-h2-m font-L_medium">$38,252.02</h6>
+                        <h6 className="text-h2-m font-L_medium">$ {coins[0].current_price}</h6>
                     </div>
                     <TimeSelector activeTime={chartinfo.time} onTimeChange={handleTimeChange} />
                 </div>

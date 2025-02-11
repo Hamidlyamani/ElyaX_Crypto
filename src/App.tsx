@@ -5,10 +5,10 @@ import { CoinProvider } from "@/contextes/coinDataContext"
 
 function App() {
   return (
-    <>  <CoinProvider>
+    <CoinProvider>
       <Layout />
     </CoinProvider>
-    </>
+
   )
 }
 

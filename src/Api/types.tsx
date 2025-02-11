@@ -35,7 +35,7 @@ export interface Chartinfo {
     coinId: string;
     chart: chartdata[];
     vs_currency?: string;
-    time?: number;
+    time: number;
     color?: string;
     strok?: string;
 }

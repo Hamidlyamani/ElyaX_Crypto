@@ -16,7 +16,6 @@ export const Coins = () => {
             color: colors[index % colors.length], // Assign color
             chart: chartData[coin.id] || [] // Add the chart data for each coin
         }));
-    console.log(selectedCoinsWithColor);
     return (
         <div className='flex  justify-between flex-wrap my-4 lg:gap-2 lg:flex-nowrap '>
             {selectedCoinsWithColor.map((item) => (
