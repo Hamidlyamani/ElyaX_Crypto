@@ -1,7 +1,12 @@
+import { useCoinData } from "@/contextes/coinDataContext";
 import { CoinPortfolio } from "./ui/coinPortfolio"
 
 
+
 export const PortfolioHome = () => {
+    const { coins } = useCoinData();
+
+
     return (
         <div className='w-full lg:w-1/4 bg-green_light_1  rounded-3xl text-black'>
             <div className="title flex justify-between items-center  p-4 border-b-2 border-gray-700">
@@ -11,11 +16,9 @@ export const PortfolioHome = () => {
                 </button>
             </div>
             <div className="content p-2">
-                <CoinPortfolio />
-                <CoinPortfolio />
-                <CoinPortfolio />
-                <CoinPortfolio />
-                <CoinPortfolio />
+                {coins.slice(0, 6).map((coin) => (
+                    <CoinPortfolio key={coin.id} {...coin} />
+                ))}
             </div>
 
         </div>

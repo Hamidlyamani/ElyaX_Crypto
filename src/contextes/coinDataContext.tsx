@@ -43,24 +43,37 @@ export const CoinProvider: React.FC<{ children: React.ReactNode }> = ({ children
         };
 
         const fetchMarketCharts = async () => {
+            const chartResults: { [coinId: string]: { time: string; price: number }[] } = {};
+
             for (const coinId of defaultSettings.coinIds) {
                 try {
-                    const chartResults: { [coinId: string]: { time: string; price: number }[] } = {};
-
                     const data = await CoinApi.getMarketChart(
                         coinId,
                         defaultSettings.vs_currency,
                         defaultSettings.time
                     );
-                    chartResults[coinId] = data.prices.map(([timestamp, price]: [number, number]) => ({
+
+                    if (!chartResults[coinId]) {
+                        chartResults[coinId] = [];
+                    }
+
+                    const newData = data.prices.map(([timestamp, price]: [number, number]) => ({
                         time: defaultSettings.time <= 1
                             ? new Date(timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
                             : new Date(timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
                         price: Number(price),
                     }));
+
+                    console.log(newData);
+
+                    // Append new data instead of replacing the entire array
+                    chartResults[coinId] = [...chartResults[coinId], ...newData];
+
+                    // Log and update state
+                    console.log({ ...chartResults });
+                    setChartData({ ...chartResults });
+
                     // Wait a bit before making the next request (e.g., 200ms)
-                    console.log(chartResults)
-                    setChartData(chartResults);
                     await delay(200);
                 } catch (err) {
                     console.error(`Error fetching chart for ${coinId}:`, err);
@@ -68,6 +81,7 @@ export const CoinProvider: React.FC<{ children: React.ReactNode }> = ({ children
                     setLoadingCharts(false); // Update loading state for charts
                 }
             }
+
         };
 
         fetchCoins();

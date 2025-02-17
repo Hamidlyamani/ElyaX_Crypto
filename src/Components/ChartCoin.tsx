@@ -18,7 +18,6 @@ export const ChartCoin = () => {
         color: "#f7931a",
         strok: "#f7931a",
     });
-    console.log('==============================')
     let chartResults: { [coinId: string]: { time: string; price: number }[] } = {};
     const handleTimeChange = async (time: number) => {
         setChartinfo({ ...chartinfo, time }); // Ensure immediate update
@@ -35,8 +34,21 @@ export const ChartCoin = () => {
             console.error("Error fetching coins:", err);
         }
     };
-    const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleCurrencyChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
         setChartinfo((prev) => ({ ...prev, vs_currency: event.target.value }));
+        setChartinfo({ ...chartinfo, vs_currency: event.target.value }); // Ensure immediate update
+        try {
+            const data = await CoinApi.getMarketChart(event.target.value, "usd");
+            chartResults = data.prices.map(([timestamp, price]: [number, number]) => ({
+                time: chartinfo.time <= 1
+                    ? new Date(timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+                    : new Date(timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric" }),
+                price: Number(price),
+            }));
+            setChartinfo({ ...chartinfo, chart: chartResults });
+        } catch (err) {
+            console.error("Error fetching coins:", err);
+        }
     };
     return (
         <div className='w-full lg:w-3/4 bg-gray-10 dark:bg-black_coin rounded-3xl'>
