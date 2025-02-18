@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 export const Search = () => {
     return (
@@ -19,7 +19,7 @@ export const Search = () => {
                     <option value="Tether"></option>
                     <option value="Ripple"></option>
                 </datalist>
-            
+
             </div>
         </div>
     )

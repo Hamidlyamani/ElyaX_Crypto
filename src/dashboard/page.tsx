@@ -13,6 +13,7 @@ import Academy from "./Portfolio/Academy"
 import { useState } from "react"
 import Profile from "./Profile/Profile"
 import Wallet from "./Portfolio/Wallet"
+import Header from "@/Components/Header"
 const Page = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState('Dashboard');
   const renderComponent = () => {
@@ -35,16 +36,19 @@ const Page = () => {
         return <Home />;
     }
   };
-
+  const containerClass = "mx-4 md:mx-8 my-4";
 
   return (
-    <div > 
-    <SidebarProvider>
-      <AppSidebar selectedMenuItem={selectedMenuItem} onMenuItemClick={setSelectedMenuItem} />
-      <SidebarInset>
-        {renderComponent()}
-      </SidebarInset>
-    </SidebarProvider>
+    <div >
+      <SidebarProvider>
+        <AppSidebar selectedMenuItem={selectedMenuItem} onMenuItemClick={setSelectedMenuItem} />
+        <SidebarInset>
+          <div className={containerClass}>
+            <Header namePage="dachboard" />
+            {renderComponent()}
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
     </div>
   )
 }

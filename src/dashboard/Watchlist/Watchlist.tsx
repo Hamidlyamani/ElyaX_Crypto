@@ -1,36 +1,56 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/Components/ui/breadcrumb";
-import { SidebarTrigger } from "@/Components/ui/sidebar";
-import { Separator } from "@radix-ui/react-separator";
+import { WatchlistHeader } from "@/Components/ui/WatchlistHeader";
+import { Payment, columns } from "./columns"
+import { DataTable } from "./data-table"
+import { useState, useEffect } from 'react';
 
+async function getData(): Promise<Payment[]> {
+  // Sample array of payment data
+  return [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com",
+    },
+    {
+      id: "489ae731",
+      amount: 250,
+      status: "success",
+      email: "john@example.com",
+    },
+    {
+      id: "912cf445",
+      amount: 75,
+      status: "failed",
+      email: "sara@example.com",
+    },
+    {
+      id: "637bd298",
+      amount: 180,
+      status: "processing",
+      email: "alex@example.com",
+    },
+    {
+      id: "145ef923",
+      amount: 320,
+      status: "success",
+      email: "emma@example.com",
+    }
+  ]
+}
 
-export default function Watchlist() {
-  return (<>
-    <header className="flex items-center h-16 gap-2 px-4 border-b shrink-0">
-      <SidebarTrigger className="-ml-1" />
-      <Separator orientation="vertical" className="h-4 mr-2" />
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem className="hidden md:block">
-            <BreadcrumbLink href="#">
-              Building Your Application
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator className="hidden md:block" />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-    </header>
-    <div className="flex flex-col flex-1 gap-4 p-4">
-      <div className="grid gap-4 auto-rows-min md:grid-cols-3">
-        <div className="aspect-video rounded-xl bg-muted/50" />
-        <div className="aspect-video rounded-xl bg-muted/50" />
-        <div className="aspect-video rounded-xl bg-muted/50" />
-      </div>
-      <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+export default function DemoPage() {
+  const [data, setData] = useState<Payment[]>([]);
+
+  useEffect(() => {
+    getData().then(setData);
+  }, []);
+
+  return (
+    <div >
+      <WatchlistHeader />
+      <DataTable columns={columns} data={data} />
     </div>
-  </>
   )
 }
 

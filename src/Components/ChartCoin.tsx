@@ -14,7 +14,7 @@ export const ChartCoin = () => {
         coinId: "bitcoin",
         chart: chartData.bitcoin,
         vs_currency: "usd",
-        time: 0.4, // Default time
+        time: 0.0416667, // Default time
         color: "#f7931a",
         strok: "#f7931a",
     });
@@ -38,7 +38,7 @@ export const ChartCoin = () => {
         setChartinfo((prev) => ({ ...prev, vs_currency: event.target.value }));
         setChartinfo({ ...chartinfo, vs_currency: event.target.value }); // Ensure immediate update
         try {
-            const data = await CoinApi.getMarketChart(event.target.value, "usd");
+            const data = await CoinApi.getMarketChart('bitcoin', event.target.value, chartinfo.time);
             chartResults = data.prices.map(([timestamp, price]: [number, number]) => ({
                 time: chartinfo.time <= 1
                     ? new Date(timestamp).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })

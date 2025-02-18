@@ -64,13 +64,11 @@ export const CoinProvider: React.FC<{ children: React.ReactNode }> = ({ children
                         price: Number(price),
                     }));
 
-                    console.log(newData);
 
                     // Append new data instead of replacing the entire array
                     chartResults[coinId] = [...chartResults[coinId], ...newData];
 
                     // Log and update state
-                    console.log({ ...chartResults });
                     setChartData({ ...chartResults });
 
                     // Wait a bit before making the next request (e.g., 200ms)

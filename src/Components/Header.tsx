@@ -23,7 +23,7 @@ const Header = ({ namePage }: HeaderProps) => {
     return (
         <>
             <div className="flex items-center justify-between  mb-6">
-              
+
                 <div className="title flex items-center gap-3">
                     <SidebarTrigger className="-ml-1" />
                     <Separator orientation="vertical" className="h-12 bg-gray-700   w-[1px] dark:bg-gray-300" />
@@ -33,7 +33,7 @@ const Header = ({ namePage }: HeaderProps) => {
                     </div>
                 </div>
                 <div className="flex items-start gap-5 header_left">
-                    <div className="search hidden">
+                    <div className="search block md:hidden">
                         <Search />
                     </div>
                     <div className="flex items-start gap-3 user_netf">
@@ -45,7 +45,7 @@ const Header = ({ namePage }: HeaderProps) => {
                                 <img src={user} alt="" />
                                 <div>
                                     <select id="setting" className="hidden md:block text-black bg-transparent dark:text-white outline-0 dark:placeholder-gray " defaultValue="user" >
-                                        
+
                                         <option value="US" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>My profile</option>
                                         <option value="user" className='p-4 m-4 border-0 dark:bg-sidebar outline-0 focus:bg-gray'>Alexim</option>
                                         <option value="CA" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>Logout</option>
