@@ -12,41 +12,60 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu"
+import { coinType } from "@/Api/types"
 
 
 
+export const columns: ColumnDef<coinType>[] = [
 
-export type Payment = {
-    id: string
-    amount: number
-    status: "pending" | "processing" | "success" | "failed"
-    email: string
-}
-
-export const columns: ColumnDef<Payment>[] = [
     {
-        accessorKey: "status",
-        header: "Status",
+        accessorKey: "name",
+        header: () => <div className="flex gap-12 text-black dark:text-white text-tag font-L_medium px-2 "><span>#</span>Name</div>,
+        cell: ({ row }) => (  // Added cell to display row data
+            <div className="flex gap-6">
+                <span>{row.index + 1} </span>  {/* Display index */}
+                <img src={row.original.image} alt={row.original.name} className="h-6 w-6" /> {/* Display image */}
+                <div>
+                    {row.original.name}
+                    <span className="p-2 text-tag text-gray-800 uppercase">{row.original.symbol} </span>
+                </div>
+            </div>
+        ),
     },
     {
-        accessorKey: "email",
-        header: "Email",
+        accessorKey: "current_price",
+        header: () => <div className=" text-black dark:text-white text-tag font-L_medium px-4 ">Price</div>,
+
     },
     {
-        accessorKey: "amount",
-        header: () => <div className="text-right">Amount</div>,
-        cell: ({ row }) => {
-            const amount = parseFloat(row.getValue("amount"))
-            const formatted = new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-            }).format(amount)
+        accessorKey: "price_change_24h",
+        header: () => <div className=" text-black dark:text-white text-tag font-L_medium px-4 ">24H</div>,
 
-            return <div className="text-right font-medium">{formatted}</div>
-        },
+    },
+    {
+        accessorKey: "ath_change_percentage",
+        header: () => <div className=" text-black dark:text-white text-tag font-L_medium px-4 ">7D</div>,
+
+    },
+    {
+        accessorKey: "market_cap",
+        header: () => <div className=" text-black dark:text-white text-tag font-L_medium px-4 ">Market cap</div>,
+
+    },
+    {
+        accessorKey: "total_volume",
+        header: () => <div className=" text-black dark:text-white text-tag font-L_medium px-4 ">Volume</div>,
+
+    },
+
+    {
+        accessorKey: "last_updated",
+        header: () => <div className=" text-black dark:text-white text-tag font-L_medium px-4 ">Last 7 days</div>,
+
     },
     {
         id: "actions",
+        header: () => <div className="">Actions</div>,
         cell: ({ row }) => {
             const payment = row.original
 

@@ -17,8 +17,10 @@ export const CoinPortfolio = (coin: coinType) => {
                 </div>
             </div>
             <div className='flex flex-col items-center justify-end'>
-                <div className="price text-b-large font-L_medium text-center">{coin.ath_change_percentage.toFixed(2)}%</div>
-                <div className="change w-fit bg-black text-green_light text-tag rounded-full p-0.5  px-1">{coin.price_change_percentage_24h.toFixed(1)}%</div>
+                <div className="price text-b-large font-L_medium text-center">{coin.ath_change_percentage.toFixed(0)}%</div>
+                <div className={`change w-fit bg-black text-tag rounded-full p-1 px-1.5 ${coin.price_change_percentage_24h > 0 ? 'text-green_light' : 'text-orange'}`}>
+                    {coin.price_change_percentage_24h.toFixed(1)}%
+                </div>
             </div>
         </div>
     )

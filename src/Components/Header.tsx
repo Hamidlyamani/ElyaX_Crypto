@@ -4,8 +4,6 @@ import user from "@/assets/imgs/icons/user.png";
 import { Search } from "./ui/search";
 import { SidebarTrigger } from "./ui/sidebar";
 import { Separator } from "@radix-ui/react-separator";
-import { useState } from "react";
-
 const formatDate = (date: Date) => {
     return date.toLocaleDateString("en-GB", {
         day: "2-digit",
@@ -33,7 +31,7 @@ const Header = ({ namePage }: HeaderProps) => {
                     </div>
                 </div>
                 <div className="flex items-start gap-5 header_left">
-                    <div className="search block md:hidden">
+                    <div className="search hidden md:block">
                         <Search />
                     </div>
                     <div className="flex items-start gap-3 user_netf">
