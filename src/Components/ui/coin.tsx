@@ -6,11 +6,11 @@ import ChartUiSmall from "./chartUiSmall";
 
 export const Coin = (data: coinType) => {
 
-    const chartdata: Chartinfo = {
+    const chartinfo: Chartinfo = {
         coinId: data.id.toString(),
-        chart: data.chart,
+        chart: Array.isArray(data.chart.prices) ? data.chart.prices : [],   // Use the transformed chartData
         color: data.color,
-        time: 1
+        time: 1,
     };
     return (
         <div className=' bg-gray-10 dark:bg-black_coin p-2 md:p-4  rounded-3xl m-1 flex flex-col justify-between  w-[calc(50%_-_8px)] lg:w-1/4 lg:m-0  '>
@@ -38,7 +38,7 @@ export const Coin = (data: coinType) => {
                     <span className={data.price_change_percentage_24h >= 0 ? " text-green_light_1 font-L_semiBold text-b-small" : "text-orange font-L_semiBold text-b-small"}>{data.price_change_percentage_24h.toFixed(2)}%</span>
                 </div>
                 <div className="chart h-[60px] w-1/2 min-w-[50px] ">
-                    <ChartUiSmall chartinfo={chartdata} />
+                    <ChartUiSmall chartinfo={chartinfo} />
                 </div>
             </div>
         </div>

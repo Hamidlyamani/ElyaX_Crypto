@@ -15,10 +15,19 @@ import {
 import { coinType } from "@/Api/types"
 import up from "@/assets/imgs/icons/up_green.png"
 import down from "@/assets/imgs/icons/down_red.png"
-
+import {
+    AlertDialog,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/Components/ui/alert-dialog"
+import { ChartCoin } from "@/Components/ChartCoin"
 
 export const columns: ColumnDef<coinType>[] = [
-
     {
         accessorKey: "name",
         header: () => <div className="flex gap-12 text-black dark:text-white text-tag font-L_medium px-2 "><span>#</span>Name</div>,
@@ -97,11 +106,25 @@ export const columns: ColumnDef<coinType>[] = [
         accessorKey: "charts",
         header: () => <div className=" text-black dark:text-white text-tag font-L_medium">Details</div>,
         cell: ({ row }) => (  // Added cell to display row data
-            <div className="flex gap-2 cursor-pointer items-center bg-green-500 p-2 rounded text-black_coin ">
-                <svg className="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v15a1 1 0 0 0 1 1h15M8 16l2.5-5.5 3 3L17.273 7 20 9.667" />
-                </svg>
-                View  Chart
+            <div>
+                <AlertDialog>
+                    <AlertDialogTrigger> <div className="flex gap-2 cursor-pointer items-center bg-green-500 p-2 rounded text-black_coin ">
+                        <svg className="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v15a1 1 0 0 0 1 1h15M8 16l2.5-5.5 3 3L17.273 7 20 9.667" />
+                        </svg>
+                        View  Chart
+                    </div>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle></AlertDialogTitle>
+                            <AlertDialogCancel>Close</AlertDialogCancel>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <ChartCoin idcoin={row.original.id} />
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </div>
         ),
     },

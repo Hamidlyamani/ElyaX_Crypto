@@ -1,5 +1,4 @@
 import { coinType } from '@/Api/types'
-import logo1 from '@/assets/imgs/icon.png'
 
 
 

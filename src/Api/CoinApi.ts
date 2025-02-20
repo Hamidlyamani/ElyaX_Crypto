@@ -20,7 +20,7 @@ export const CoinApi = {
     },
     getSpecificCoins: async (coinIds = ['bitcoin', 'ethereum', 'ripple'], vs_currency = 'usd') => {
         try {
-            const response = await customAxios.get('/markets', {
+            const response = await customAxios.get<chartRep[]>('/markets', {
                 params: {
                     vs_currency,
                     ids: coinIds.join(',')
@@ -34,7 +34,7 @@ export const CoinApi = {
     },
     getMarketChart: async (coinId = 'bitcoin', vs_currency = 'usd', days = 1) => {
         try {
-            const response = await customAxios.get<chartRep[]>(`/${coinId}/market_chart`, {
+            const response = await customAxios.get<chartRep>(`/${coinId}/market_chart`, {
                 params: {
                     vs_currency,
                     days

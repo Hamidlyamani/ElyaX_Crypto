@@ -3,14 +3,10 @@ import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 
 import { CardContent } from "@/Components/ui/card"
 import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/Components/ui/chart"
-import { useContext, useEffect, useState } from "react"
-import { coinContext } from "@/contextes/coinContext"
 import { Chartinfo } from "@/Api/types"
 
 
 const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
-
-    const [chartcoins, setChartCoins] = useState();
 
     const chartConfig = {
         price: {

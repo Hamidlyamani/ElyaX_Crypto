@@ -7,7 +7,6 @@ import { useCoinData } from "@/contextes/coinDataContext";
 export default function DemoPage() {
 
   const { coins, loading } = useCoinData();
-  console.log(coins)
   if (loading) {
     return (
       <div >
