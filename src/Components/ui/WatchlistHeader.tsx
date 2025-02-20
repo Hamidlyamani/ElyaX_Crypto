@@ -15,7 +15,7 @@ export const WatchlistHeader: React.FC<WatchlistHeaderProps> = ({ table }) => {
                     <div className="flex gap-4">
                         <div className="flex items-center relative">
                             <Input
-                                placeholder="Filter emails..."
+                                placeholder="Filter coins..."
                                 value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
                                 onChange={(event) =>
                                     table.getColumn("name")?.setFilterValue(event.target.value)
