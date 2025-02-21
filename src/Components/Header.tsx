@@ -45,7 +45,7 @@ const Header = ({ namePage }: HeaderProps) => {
                                     <select id="setting" className="hidden md:block text-black bg-transparent dark:text-white outline-0 dark:placeholder-gray " defaultValue="user" >
 
                                         <option value="US" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>My profile</option>
-                                        <option value="user" className='p-4 m-4 border-0 dark:bg-sidebar outline-0 focus:bg-gray'>Alexim</option>
+                                        <option value="user" className='p-4 m-4 border-0 dark:bg-sidebar outline-0 focus:bg-gray'>Me</option>
                                         <option value="CA" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>Logout</option>
                                     </select>
                                 </div>

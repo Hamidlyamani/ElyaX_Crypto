@@ -8,15 +8,17 @@ import { Chartinfo } from "@/Api/types"
 
 const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
 
+
+    const minPrice = chartinfo.chart.prices.length > 0 ? Math.min(...chartinfo.chart.prices.map(d => Number(d.price.toFixed(2)))) : 0;
+    const maxPrice = chartinfo.chart.prices.length > 0 ? Math.max(...chartinfo.chart.prices.map(d => Number(d.price.toFixed(2)))) : 100; // Set a default max if no data
+    console.log(chartinfo.time)
     const chartConfig = {
         price: {
-            label: "USD",
+            label: "price",
             color: chartinfo.color,
         },
     } satisfies ChartConfig
 
-    const minPrice = chartinfo.chart.length > 0 ? Math.min(...chartinfo.chart.map(d => Number(d.price.toFixed(2)))) : 0;
-    const maxPrice = chartinfo.chart.length > 0 ? Math.max(...chartinfo.chart.map(d => Number(d.price.toFixed(2)))) : 100; // Set a default max if no data
 
     return (
         <>
@@ -24,7 +26,7 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                 <ChartContainer config={chartConfig}>
                     <AreaChart
                         accessibilityLayer
-                        data={chartinfo.chart}
+                        data={chartinfo.chart.prices}
                         margin={{
                             left: 30,
                             right: 0,
@@ -44,8 +46,8 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                             tickMargin={8}
                             allowDataOverflow={true}
                             domain={[
-                                parseFloat((minPrice - minPrice * 0.01).toFixed(2)),
-                                parseFloat((maxPrice + maxPrice * 0.01).toFixed(2))
+                                parseFloat((minPrice > 1 ? minPrice - minPrice * 0.01 : minPrice).toFixed(2)),
+                                parseFloat((maxPrice > 1 ? maxPrice + maxPrice * 0.01 : maxPrice).toFixed(2))
                             ]}
                         />
                         <ChartTooltip cursor={true} content={<ChartTooltipContent />} />

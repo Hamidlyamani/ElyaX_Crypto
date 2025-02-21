@@ -37,8 +37,6 @@ export const CoinProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }));
     };
 
-
-
     useEffect(() => {
         const fetchCoins = async () => {
             try {
@@ -50,7 +48,6 @@ export const CoinProvider: React.FC<{ children: React.ReactNode }> = ({ children
             } finally {
                 setLoadingCoins(false); // Update loading state for coins
             }
-
         };
 
         const fetchMarketCharts = async () => {
@@ -85,23 +82,29 @@ export const CoinProvider: React.FC<{ children: React.ReactNode }> = ({ children
                     chartResults[coinId].market_caps.push(...formattedData.market_caps);
                     chartResults[coinId].total_volumes.push(...formattedData.total_volumes);
                     // Log and update state
-                    setChartData((prevChartData) => ({
 
-                        ...prevChartData,
-                        [coinId]: {
-                            prices: [...(prevChartData[coinId]?.prices || []), ...formattedData.prices],
-                            market_caps: [...(prevChartData[coinId]?.market_caps || []), ...formattedData.market_caps],
-                            total_volumes: [...(prevChartData[coinId]?.total_volumes || []), ...formattedData.total_volumes],
-                        }
-                    }));
+                    setChartData((prevChartData) => {
+                        const updatedChartData = {
+                            ...prevChartData,
+                            [coinId]: {
+                                prices: [...(prevChartData[coinId]?.prices || []), ...formattedData.prices],
+                                market_caps: [...(prevChartData[coinId]?.market_caps || []), ...formattedData.market_caps],
+                                total_volumes: [...(prevChartData[coinId]?.total_volumes || []), ...formattedData.total_volumes],
+                            }
+                        };
+                        return { ...updatedChartData }; // Ensure a fresh object reference
+                    });
+
+
+
                     await delay(200);
                 } catch (err) {
                     console.error(`Error fetching chart for ${coinId}:`, err);
                 } finally {
-                    setLoadingCharts(false); // Update loading state for charts
+
                 }
             }
-
+            setLoadingCharts(false); // Update loading state for charts
         };
 
 

@@ -38,8 +38,6 @@ const data = {
       items: [
         { title: "Dashboard", url: "dashboard", icon: m1, isActive: true },
         { title: "Watchlist", url: "watchlist", icon: m2, },
-        { title: "Portfolio", url: "portfolio", icon: m3 },
-        { title: "Trading", url: "trading", icon: m4 },
         { title: "Profile", url: "profile", icon: m6 },
       ],
     },

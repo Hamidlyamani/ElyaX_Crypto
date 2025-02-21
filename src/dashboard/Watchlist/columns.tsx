@@ -119,6 +119,7 @@ export const columns: ColumnDef<coinType>[] = [
                         <AlertDialogHeader>
                             <AlertDialogTitle></AlertDialogTitle>
                             <AlertDialogCancel>Close</AlertDialogCancel>
+                            <AlertDialogDescription></AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                             <ChartCoin idcoin={row.original.id} />

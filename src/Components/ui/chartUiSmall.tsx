@@ -15,9 +15,8 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
             color: chartinfo.color,
         },
     } satisfies ChartConfig
-
-    const minPrice = chartinfo.chart.length > 0 ? Math.min(...chartinfo.chart.map(d => d.price)) : 0;
-    const maxPrice = chartinfo.chart.length > 0 ? Math.max(...chartinfo.chart.map(d => d.price)) : 100;
+    const minPrice = (chartinfo.chart.prices && chartinfo.chart.prices.length > 0) ? Math.min(...chartinfo.chart.prices.map(d => d.price)) : 0;
+    const maxPrice = (chartinfo.chart.prices && chartinfo.chart.prices.length > 0) ? Math.max(...chartinfo.chart.prices.map(d => d.price)) : 100;
 
     return (
         <>
@@ -25,7 +24,7 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                 <ChartContainer config={chartConfigsmall}>
                     <AreaChart
                         accessibilityLayer
-                        data={chartinfo.chart}
+                        data={chartinfo.chart.prices}
                         margin={{
                             left: 40,
                             right: 0,

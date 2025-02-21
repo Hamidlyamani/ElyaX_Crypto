@@ -1,10 +1,10 @@
 import { Balance } from "@/Components/Balance";
 import { Coins } from "@/Components/ui/Coins";
-import Header from "@/Components/Header";
 import { PortfolioHome } from "@/Components/portfolioHome";
 import { ChartCoin } from "@/Components/ChartCoin";
 import { useCoinData } from "@/contextes/coinDataContext";
 import HomeSkeleton from "./HomeSkeleton.tsx";
+import NoData from "../noData.tsx";
 
 export default function Home() {
   const { loading, error } = useCoinData();
@@ -21,10 +21,10 @@ export default function Home() {
       );
     }
 
-    if (error) {
+    if (!error) {
       return (
         <div >
-          <p>{error}</p>
+          <NoData />
         </div>
       );
     }

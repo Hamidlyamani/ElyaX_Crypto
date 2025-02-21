@@ -8,6 +8,7 @@ const coinsselected = ['bitcoin', 'ethereum', 'dogecoin', 'solana']
 export const Coins = () => {
 
     const { coins, chartData } = useCoinData();
+
     const selectedCoinsWithColor = coins
         .filter((coin) => coinsselected.includes(coin.id)) // Filter based on coinsselected
         .map((coin, index) => ({

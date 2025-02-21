@@ -3,7 +3,7 @@ import dollar from '@/assets/imgs/icons/dollar-circle.png'
 import ChartUi from './ui/chartui'
 import TimeSelector from './ui/TimeSelector'
 import { useEffect, useState } from 'react'
-import { chartdata, Chartinfo, chartRep } from '@/Api/types'
+import { chartdata, Chartinfo } from '@/Api/types'
 import { useCoinData } from '@/contextes/coinDataContext'
 import { CoinApi } from '@/Api/CoinApi'
 
@@ -16,13 +16,13 @@ export const ChartCoin: React.FC<chartProps> = ({ idcoin }) => {
 
     const [chartinfo, setChartinfo] = useState<Chartinfo>({
         coinId: idcoin ? idcoin : "bitcoin",
-        chart: chartData.bitcoin.prices,
+        chart: chartData.bitcoin,
         vs_currency: "usd",
         time: 0.0416667, // Default time
         color: "#f7931a",
-        strok: "#f7931a",
+        strok: "#77ED91",
     });
-
+    console.log(chartinfo.time)
     let thiscoins = coins.find(item => item.id === (idcoin ? idcoin : "bitcoin"));
     if (idcoin !== undefined) {
         useEffect(() => {
@@ -30,7 +30,7 @@ export const ChartCoin: React.FC<chartProps> = ({ idcoin }) => {
                 try {
                     const data = await CoinApi.getMarketChart(idcoin, "usd", chartinfo.time);
                     chartResults = formatChartData(data.prices);
-                    setChartinfo({ ...chartinfo, chart: chartResults });
+                    setChartinfo({ ...chartinfo, chart: { ...chartinfo.chart, prices: chartResults } });
                 } catch (err) {
                     console.error("Error fetching coins:", err);
                 }
@@ -54,18 +54,19 @@ export const ChartCoin: React.FC<chartProps> = ({ idcoin }) => {
         try {
             const data = await CoinApi.getMarketChart('bitcoin', "usd", time);
             chartResults = formatChartData(data.prices)
-            setChartinfo({ ...chartinfo, chart: chartResults });
+            setChartinfo({ ...chartinfo, chart: { ...chartinfo.chart, prices: chartResults } });
         } catch (err) {
             console.error("Error fetching coins:", err);
         }
     };
+    console.log(chartinfo.time)
     const handleCurrencyChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
         setChartinfo((prev) => ({ ...prev, vs_currency: event.target.value }));
         setChartinfo({ ...chartinfo, vs_currency: event.target.value }); // Ensure immediate update
         try {
             const data = await CoinApi.getMarketChart('bitcoin', event.target.value, chartinfo.time);
             chartResults = formatChartData(data.prices)
-            setChartinfo({ ...chartinfo, chart: chartResults });
+            setChartinfo({ ...chartinfo, chart: { ...chartinfo.chart, prices: chartResults } });
         } catch (err) {
             console.error("Error fetching coins:", err);
         }

@@ -22,7 +22,6 @@ import {
     TableHeader,
     TableRow,
 } from "@/Components/ui/table"
-import { Input } from "@/Components/ui/input"
 import { WatchlistHeader } from "@/Components/ui/WatchlistHeader"
 import { Button } from "@/Components/ui/button"
 

@@ -8,7 +8,7 @@ export interface coinType {
     atl_date: string;
     circulating_supply: number;
     current_price: number;
-    chart: ChartDataShow;
+    chart: DataToPasseToChartInfo;
     fully_diluted_valuation: number;
     high_24h: number;
     id: string;
@@ -33,7 +33,7 @@ export interface coinType {
 
 export interface Chartinfo {
     coinId: string;
-    chart: chartdata[];
+    chart: DataToPasseToChartInfo;
     vs_currency?: string;
     time: number;
     color?: string;
@@ -49,6 +49,11 @@ export interface ChartDataShow {
         market_caps: chartdata[];
         total_volumes: chartdata[];
     }
+}
+export interface DataToPasseToChartInfo {
+    prices: chartdata[];
+    market_caps: chartdata[];
+    total_volumes: chartdata[];
 }
 
 export interface TimeSelectorProps {

@@ -7,12 +7,8 @@ import {
 } from "@/Components/ui/sidebar"
 import Home from "./Home/Home"
 import Watchlist from "./Watchlist/Watchlist"
-import Portfolio from "./Portfolio/Portfolio"
-import Trading from "./Portfolio/Trading"
-import Academy from "./Portfolio/Academy"
 import { useState } from "react"
 import Profile from "./Profile/Profile"
-import Wallet from "./Portfolio/Wallet"
 import Header from "@/Components/Header"
 const Page = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState('Dashboard');
@@ -22,16 +18,8 @@ const Page = () => {
         return <Home />;
       case 'Watchlist':
         return <Watchlist />;
-      case 'Portfolio':
-        return <Portfolio />;
-      case 'Trading':
-        return <Trading />;
-      case 'Academy':
-        return <Academy />;
       case 'Profile':
         return <Profile />;
-      case 'Wallet':
-        return <Wallet />;
       default:
         return <Home />;
     }

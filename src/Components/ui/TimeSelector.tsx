@@ -15,7 +15,7 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ activeTime, onTimeChange })
             {timeOptions.map((option) => (
                 <div
                     key={option.label}
-                    className={`bg-gray-50 text-gray-700 dark:bg-gray-900 dark:text-gray-800 p-1 px-2 lg:px-4 cursor-pointer text-tag-small flex items-center rounded-full ${activeTime === option.value ? "bg-yellow-300 text-gray-900 dark:bg-yellow-300 dark:text-gray-900" : ""
+                    className={`bg-gray-50 text-gray-700 dark:bg-gray-900 dark:text-gray-800 p-1 px-2 lg:px-4 cursor-pointer text-tag-small flex items-center rounded-full ${activeTime === option.value ? "bg-green_light_1 text-gray-900 dark:bg-green_light_1 dark:text-gray-900" : ""
                         }`}
                     onClick={() => onTimeChange(option.value)}
                 >
