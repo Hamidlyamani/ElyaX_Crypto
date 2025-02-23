@@ -32,7 +32,7 @@ const Page = () => {
         <AppSidebar selectedMenuItem={selectedMenuItem} onMenuItemClick={setSelectedMenuItem} />
         <SidebarInset>
           <div className={containerClass}>
-            <Header namePage="dachboard" />
+            <Header namePage={selectedMenuItem} />
             {renderComponent()}
           </div>
         </SidebarInset>

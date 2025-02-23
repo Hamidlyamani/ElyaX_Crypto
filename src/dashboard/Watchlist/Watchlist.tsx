@@ -1,4 +1,5 @@
 
+import NoData from "../noData";
 import { columns } from "./columns"
 import { DataTable } from "./data-table"
 import { useCoinData } from "@/contextes/coinDataContext";
@@ -6,11 +7,18 @@ import { useCoinData } from "@/contextes/coinDataContext";
 
 export default function DemoPage() {
 
-  const { coins, loading } = useCoinData();
+  const { coins, error, loading } = useCoinData();
   if (loading) {
     return (
       <div >
         loading....
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div >
+        <NoData />
       </div>
     );
   }

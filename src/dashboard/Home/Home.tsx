@@ -21,7 +21,7 @@ export default function Home() {
       );
     }
 
-    if (!error) {
+    if (error) {
       return (
         <div >
           <NoData />
