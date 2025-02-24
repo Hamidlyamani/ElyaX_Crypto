@@ -11,7 +11,6 @@ function App() {
     <CoinProvider>
       <ToastContainer position="top-right" autoClose={3000} />
       <Layout />
-
     </CoinProvider>
 
   )

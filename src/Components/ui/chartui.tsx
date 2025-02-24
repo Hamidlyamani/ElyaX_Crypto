@@ -11,7 +11,6 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
 
     const minPrice = chartinfo.chart.prices.length > 0 ? Math.min(...chartinfo.chart.prices.map(d => Number(d.price.toFixed(2)))) : 0;
     const maxPrice = chartinfo.chart.prices.length > 0 ? Math.max(...chartinfo.chart.prices.map(d => Number(d.price.toFixed(2)))) : 100; // Set a default max if no data
-    console.log(chartinfo.time)
     const chartConfig = {
         price: {
             label: "price",

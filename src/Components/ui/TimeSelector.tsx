@@ -10,6 +10,7 @@ const timeOptions = [
 ];
 
 const TimeSelector: React.FC<TimeSelectorProps> = ({ activeTime, onTimeChange }) => {
+
     return (
         <div className="right flex gap-1 lg:gap-2 p-1 lg:p-2">
             {timeOptions.map((option) => (
@@ -19,8 +20,6 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ activeTime, onTimeChange })
                         }`}
                     onClick={() => onTimeChange(option.value)}
                 >
-
-
                     {option.label}
                 </div>
             ))}

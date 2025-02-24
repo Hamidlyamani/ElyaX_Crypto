@@ -108,12 +108,13 @@ export const columns: ColumnDef<coinType>[] = [
         cell: ({ row }) => (  // Added cell to display row data
             <div>
                 <AlertDialog>
-                    <AlertDialogTrigger> <div className="flex gap-2 cursor-pointer items-center bg-green-500 p-2 rounded text-black_coin ">
-                        <svg className="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v15a1 1 0 0 0 1 1h15M8 16l2.5-5.5 3 3L17.273 7 20 9.667" />
-                        </svg>
-                        View  Chart
-                    </div>
+                    <AlertDialogTrigger>
+                        <div className="flex gap-2 cursor-pointer items-center bg-green-500 p-2 rounded text-black_coin">
+                            <svg className="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v15a1 1 0 0 0 1 1h15M8 16l2.5-5.5 3 3L17.273 7 20 9.667" />
+                            </svg>
+                            View Chart
+                        </div>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                         <AlertDialogHeader>

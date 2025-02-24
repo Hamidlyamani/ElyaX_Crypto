@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { chartdata, Chartinfo } from '@/Api/types'
 import { useCoinData } from '@/contextes/coinDataContext'
 import { CoinApi } from '@/Api/CoinApi'
+import { toast } from 'react-toastify'
 
 interface chartProps {
     idcoin?: string; // Optional promise
@@ -22,7 +23,8 @@ export const ChartCoin: React.FC<chartProps> = ({ idcoin }) => {
         color: "#f7931a",
         strok: "#77ED91",
     });
-    console.log(chartinfo.time)
+
+
     let thiscoins = coins.find(item => item.id === (idcoin ? idcoin : "bitcoin"));
     if (idcoin !== undefined) {
         useEffect(() => {
@@ -33,6 +35,11 @@ export const ChartCoin: React.FC<chartProps> = ({ idcoin }) => {
                     setChartinfo({ ...chartinfo, chart: { ...chartinfo.chart, prices: chartResults } });
                 } catch (err) {
                     console.error("Error fetching coins:", err);
+                    setChartinfo({ ...chartinfo, chart: { ...chartinfo.chart, prices: [] } });
+                    toast.error("Too many requests! Try again in a bit. ⏳", {
+                        autoClose: 6000,
+                        position: 'top-right',
+                    });
                 }
             }
             fetchData();
@@ -50,16 +57,26 @@ export const ChartCoin: React.FC<chartProps> = ({ idcoin }) => {
 
 
     const handleTimeChange = async (time: number) => {
-        setChartinfo({ ...chartinfo, time }); // Ensure immediate update
+        setChartinfo((prev) => ({ ...prev, time }));
         try {
             const data = await CoinApi.getMarketChart('bitcoin', "usd", time);
             chartResults = formatChartData(data.prices)
-            setChartinfo({ ...chartinfo, chart: { ...chartinfo.chart, prices: chartResults } });
+            setChartinfo((prev) => ({
+                ...prev,
+                chart: { ...prev.chart, prices: chartResults },
+            }));
         } catch (err) {
             console.error("Error fetching coins:", err);
+            setChartinfo((prev) => ({
+                ...prev,
+                chart: { ...prev.chart, prices: [] },
+            }));
+            toast.error("Too many requests! Try again in a bit. ⏳", {
+                autoClose: 6000,
+                position: 'top-right',
+            });
         }
     };
-    console.log(chartinfo.time)
     const handleCurrencyChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
         setChartinfo((prev) => ({ ...prev, vs_currency: event.target.value }));
         setChartinfo({ ...chartinfo, vs_currency: event.target.value }); // Ensure immediate update
@@ -69,6 +86,11 @@ export const ChartCoin: React.FC<chartProps> = ({ idcoin }) => {
             setChartinfo({ ...chartinfo, chart: { ...chartinfo.chart, prices: chartResults } });
         } catch (err) {
             console.error("Error fetching coins:", err);
+            setChartinfo({ ...chartinfo, chart: { ...chartinfo.chart, prices: [] } });
+            toast.error("Too many requests! Try again in a bit. ⏳", {
+                autoClose: 6000,
+                position: 'top-right',
+            });
         }
     };
 

@@ -3,11 +3,7 @@ import { useState, useEffect } from "react"
 import logo from "@/assets/imgs/logo.png"
 import m1 from "@/assets/imgs/icons/m1.png"
 import m2 from "@/assets/imgs/icons/m2.png"
-import m3 from "@/assets/imgs/icons/m3.png"
-import m4 from "@/assets/imgs/icons/m4.png"
-import m5 from "@/assets/imgs/icons/m5.png"
 import m6 from "@/assets/imgs/icons/m6.png"
-import m7 from "@/assets/imgs/icons/m7.png"
 import Logout from "@/assets/imgs/icons/logout.png"
 
 import {
@@ -21,6 +17,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
+  useSidebar,
 } from "@/Components/ui/sidebar"
 import { IconMenu } from "./ui/IconMenu"
 import { Switch } from "@/Components/ui/switch"
@@ -46,8 +43,20 @@ const data = {
 
 
 
-export function AppSidebar({ selectedMenuItem, onMenuItemClick, ...props }: AppSidebarProps) {
+export function AppSidebar({ selectedMenuItem, onMenuItemClick }: AppSidebarProps) {
+  const { isMobile, openMobile, setOpenMobile, } = useSidebar();
 
+
+
+
+  const onMenuItemClickcont = (title: string) => {
+    onMenuItemClick(title);
+
+    // Close sidebar on mobile
+    if (isMobile) {
+      setOpenMobile(false); // Use the method to close the sidebar
+    }
+  };
   const [dark, setDark] = useState(true);
 
 
@@ -61,7 +70,7 @@ export function AppSidebar({ selectedMenuItem, onMenuItemClick, ...props }: AppS
     document.body.classList.toggle("dark", !dark); // Add or remove the "dark" class based on the new state
   };
   return (
-    <Sidebar {...props} collapsible="icon">
+    <Sidebar collapsible="icon" className={openMobile ? "open" : "closed"} >
       <SidebarHeader>
         <img src={logo} alt="" className="p-2 my-4 mr-8 logo " />
       </SidebarHeader>
@@ -75,7 +84,7 @@ export function AppSidebar({ selectedMenuItem, onMenuItemClick, ...props }: AppS
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={selectedMenuItem === item.title}>
-                      <button onClick={() => onMenuItemClick(item.title)} ><IconMenu imge={item.icon} />  {item.title}</button>
+                      <button onClick={() => onMenuItemClickcont(item.title)} ><IconMenu imge={item.icon} />  {item.title}</button>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
