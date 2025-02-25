@@ -23,7 +23,7 @@ export const CoinProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Default coin settings
     const defaultSettings = {
-        coinIds: ['bitcoin', 'ethereum', 'dogecoin', 'solana'], // Coins to fetch
+        coinIds: ['bitcoin', 'ethereum', 'tron', 'solana'], // Coins to fetch
         vs_currency: "usd",
         time: 0.04, // Default time
     };

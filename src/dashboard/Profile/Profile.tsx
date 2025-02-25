@@ -5,7 +5,7 @@ import avatar from "@/assets/imgs/avatar.png"
 export default function Profile() {
   return (<>
 
-    <div className="card w-full md:w-[40%] bg-gray-10 dark:bg-sidebar rounded-xl p-6 mt-6 mx-auto">
+    <div className="card w-full md:w-[40%] bg-gray-10 dark:bg-sidebar rounded-xl py-2 md:p-6 mt-6 mx-auto">
       <div className="haeder">
         <div className="max-w-24 mx-auto">
           <img src={avatar} alt="" className="mx-auto" />

@@ -7,11 +7,11 @@ import {
 } from "@/Components/ui/sidebar"
 import Home from "./Home/Home"
 import Watchlist from "./Watchlist/Watchlist"
-import { useState } from "react"
 import Profile from "./Profile/Profile"
 import Header from "@/Components/Header"
+import { useMenu } from "@/contextes/menuContext"
 const Page = () => {
-  const [selectedMenuItem, setSelectedMenuItem] = useState('Dashboard');
+  const { selectedMenuItem, setSelectedMenuItem } = useMenu();
   const renderComponent = () => {
     switch (selectedMenuItem) {
       case 'Dashboard':
@@ -24,12 +24,13 @@ const Page = () => {
         return <Home />;
     }
   };
-  const containerClass = "mx-4 md:mx-8 my-4";
+  const containerClass = "mx-3 md:mx-4 md:mx-8 my-4";
 
   return (
     <div >
       <SidebarProvider>
-        <AppSidebar selectedMenuItem={selectedMenuItem} onMenuItemClick={setSelectedMenuItem} />
+        <AppSidebar selectedMenuItem={selectedMenuItem}
+          onMenuItemClick={setSelectedMenuItem} />
         <SidebarInset>
           <div className={containerClass}>
             <Header namePage={selectedMenuItem} />

@@ -26,7 +26,7 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                         accessibilityLayer
                         data={chartinfo.chart.prices}
                         margin={{
-                            left: 40,
+                            left: 0,
                             right: 0,
                         }}
                     >
@@ -59,7 +59,7 @@ const ChartUiSmall: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                             type="natural"
                             fill={`url(#fill-${chartinfo.coinId}-1)`}
                             fillOpacity={0.4}
-                            stroke="rgb(119 237 145)"
+                            stroke={chartinfo.color ? chartinfo.color : "rgb(119 237 145)"}
                             stackId="a"
                         />
 
