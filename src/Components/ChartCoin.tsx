@@ -135,7 +135,7 @@ export const ChartCoin: React.FC<chartProps> = ({ idcoin }) => {
                     </div>
                     <TimeSelector activeTime={chartinfo.time} onTimeChange={handleTimeChange} />
                 </div>
-                <div className="chart lg:py-6 pt-4 h-[300px]">
+                <div className="chart lg:py-6 pt-4 h-[200px] md:h-[300px]">
                     <ChartUi chartinfo={chartinfo} />
                 </div>
             </div>

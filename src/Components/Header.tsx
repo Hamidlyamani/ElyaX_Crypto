@@ -4,6 +4,7 @@ import user from "@/assets/imgs/icons/user.png";
 import { Search } from "./ui/search";
 import { SidebarTrigger } from "./ui/sidebar";
 import { Separator } from "@radix-ui/react-separator";
+import { useMenu } from "@/contextes/menuContext";
 const formatDate = (date: Date) => {
     return date.toLocaleDateString("en-GB", {
         day: "2-digit",
@@ -17,6 +18,17 @@ type HeaderProps = {
 
 const Header = ({ namePage }: HeaderProps) => {
     const today = new Date();
+    const { setSelectedMenuItem } = useMenu();
+
+    const handleMenuItemChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedValue = event.target.value;
+        if (selectedValue === "US" || selectedValue === "user") {
+            setSelectedMenuItem('Profile'); // Set to 'profile' for both options
+        } else if (selectedValue === "CA") {
+            // Handle logout or any other action for the Logout option
+            console.log("Logout selected");
+        }
+    };
 
     return (
         <>
@@ -40,10 +52,9 @@ const Header = ({ namePage }: HeaderProps) => {
                         </div>
                         <div className="netf_list">
                             <div className="flex items-center gap-2 user_item">
-                                <img src={user} alt="" />
+                                <img src={user} alt="" onClick={() => { setSelectedMenuItem('Profile'); }} />
                                 <div>
-                                    <select id="setting" className="hidden md:block text-black bg-transparent dark:text-white outline-0 dark:placeholder-gray " defaultValue="user" >
-
+                                    <select id="setting" className="hidden md:block text-black bg-transparent dark:text-white outline-0 dark:placeholder-gray" defaultValue="user" onChange={handleMenuItemChange}>
                                         <option value="US" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>My profile</option>
                                         <option value="user" className='p-4 m-4 border-0 dark:bg-sidebar outline-0 focus:bg-gray'>Me</option>
                                         <option value="CA" className='p-4 m-4 border-0 dark:bg-sidebar outline-0'>Logout</option>

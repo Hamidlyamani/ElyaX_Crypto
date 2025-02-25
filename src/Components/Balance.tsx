@@ -4,7 +4,7 @@ import arrow from "@/assets/imgs/icons/arrow1.png";
 
 
 export const Balance = () => {
-    return (<div className='my-8'>
+    return (<div className='my-12'>
         <div className='flex  justify-between flex-col lg:items-end lg:flex-row'>
             <div className="font-L_regular">
                 <h3 className=' text-b-large uppercase '>Total Balance</h3>
@@ -26,9 +26,9 @@ export const Balance = () => {
                     <div className="flex gap-4 items-center "> <span className="text-b-large font-L_medium">+11.5%</span> <img src={arrow1} alt="" /></div>
                 </div>
             </div>
-           
+
         </div>
-        <p className="text-gray-600 dark:text-gray-800 font-L_regular text-tag mt-4 md:mt-0">*: Mock amounts, just for fun!  ;&#41;</p>
-        </div>
+        <p className="text-gray-600 dark:text-gray-800 font-L_regular text-tag mt-2 md:mt-0">*: Mock amounts, just for fun!  ;&#41;</p>
+    </div>
     )
 }

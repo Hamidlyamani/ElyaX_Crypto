@@ -27,7 +27,7 @@ const ChartUi: React.FC<{ chartinfo: Chartinfo }> = ({ chartinfo }) => {
                         accessibilityLayer
                         data={chartinfo.chart.prices}
                         margin={{
-                            left: 30,
+                            left: 5,
                             right: 0,
                         }}
                     >

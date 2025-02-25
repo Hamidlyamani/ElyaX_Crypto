@@ -3,7 +3,7 @@ import error_img from "@/assets/imgs/error_img.png"
 import { useEffect, useState } from "react";
 
 const NoData = () => {
-    const [timeLeft, setTimeLeft] = useState(30);
+    const [timeLeft, setTimeLeft] = useState(40);
 
     useEffect(() => {
         if (timeLeft > 0) {
