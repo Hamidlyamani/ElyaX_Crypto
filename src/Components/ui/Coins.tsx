@@ -2,8 +2,8 @@
 import { Coin } from './coin'
 import { useCoinData } from '@/contextes/coinDataContext'
 
-const colors = ["orange", 'gray', "#0074e0", "red"]
-const coinsselected = ['bitcoin', 'ethereum', 'tron', 'solana']
+const colors = ["orange", 'gray', "#0074e0", "pink"]
+const coinsselected = ['bitcoin', 'ethereum', 'mantra-dao', 'solana']
 
 export const Coins = () => {
 
